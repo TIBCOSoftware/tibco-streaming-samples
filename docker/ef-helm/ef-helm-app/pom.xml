@@ -299,12 +299,12 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>com.kiwigrid</groupId>
+                <groupId>io.kokuwa.maven</groupId>
                 <artifactId>helm-maven-plugin</artifactId>
                 <configuration>
                     <chartDirectory>${project.build.directory}/helm/${project.artifactId}</chartDirectory>
                     <chartVersion>${project.version}</chartVersion>
-		    <addDefaultRepo>false</addDefaultRepo>
+                    <addDefaultRepo>false</addDefaultRepo>
                     <uploadRepoStable>
                         <name>helm.registry</name>
                         <url>${helm.registry}</url>
