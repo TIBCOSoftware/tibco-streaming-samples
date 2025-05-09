@@ -1,8 +1,8 @@
 # Using
 
-This component is available via maven.  Include in your pom.xml file the following :-
+This component is available via maven.  Include in your pom.xml file the following :
 
-```
+```xml
     <project>
         ...
         <dependencies>

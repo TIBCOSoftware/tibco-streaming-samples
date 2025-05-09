@@ -7,10 +7,10 @@ Samples :
 * [How to structure TIBCO Streaming projects.](structure/README.md)
 * [How to test TIBCO Streaming projects.](testing/README.md)
 * [How to deploy web application in TIBCO Streaming projects.](web/README.md)
-* [How to use Docker in TIBCO&reg; Streaming 11.2.0-SNAPSHOT projects.](docker/README.md)
-* [How to build Highly Available TIBCO&reg; Streaming 11.2.0-SNAPSHOT projects.](highavailability/README.md)
-* [How to invoke Java from TIBCO&reg; Streaming 11.2.0-SNAPSHOT projects.](java/README.md)
-* [How to use native libraries in TIBCO&reg; Streaming 11.2.0-SNAPSHOT projects.](nativelibrary/README.md)
+* [How to use Docker in TIBCO® Streaming 11.2.0-SNAPSHOT projects.](docker/README.md)
+* [How to build Highly Available TIBCO® Streaming 11.2.0-SNAPSHOT projects.](highavailability/README.md)
+* [How to invoke Java from TIBCO® Streaming 11.2.0-SNAPSHOT projects.](java/README.md)
+* [How to use native libraries in TIBCO® Streaming 11.2.0-SNAPSHOT projects.](nativelibrary/README.md)
 
 ---
 Copyright (c) 2018-2025 Cloud Software Group, Inc.

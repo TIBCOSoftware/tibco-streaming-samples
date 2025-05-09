@@ -7,8 +7,6 @@ This sample builds on the [main Kubernetes sample](../../../../../ef-kubernetes/
 * [Packaging with Helm](#packaging-with-helm)
 * [Deployment](#deployment)
 
-<a name="prerequisites"></a>
-
 ## Prerequisites
 
 In addition to Docker and Kubernetes ( see [main Kubernetes sample](../../../../../ef-kubernetes/ef-kubernetes-app/src/site/markdown/index.md) ), 
@@ -123,8 +121,6 @@ The *helm uninstall* command will stop the application and delete the chart :
 $ helm uninstall ef-helm-app
 release "ef-helm-app" uninstalled
 ```
-
-<a name="deployment"></a>
 
 ## Deployment
 

@@ -4,11 +4,9 @@ This sample describes how to build an EventFlow fragment suitable for 2-node act
 
 * [Store tuples in a query table backed by transactional memory](#store-tuples-in-a-query-table-backed-by-transactional-memory)
 * [Design notes](#design-notes)
-* [Running this sample from TIBCO StreamBase&reg; Studio](#running-this-sample-from-tibco-streambase-studio-trade)
-* [Building this sample from TIBCO StreamBase&reg; Studio and running the unit test cases](#building-this-sample-from-tibco-streambase-studio-trade-and-running-the-unit-test-cases)
+* [Running this sample from TIBCO StreamBase® Studio](#running-this-sample-from-tibco-streambase-reg-studio)
+* [Building this sample from TIBCO StreamBase® Studio and running the unit test cases](#building-this-sample-from-tibco-streambase-reg-studio-and-running-the-unit-test-cases)
 * [Building this sample from the command line and running the unit test cases](#building-this-sample-from-the-command-line-and-running-the-unit-test-cases)
-
-<a name="store-tuples-in-a-query-table-backed-by-transactional-memory"></a>
 
 ## Store tuples in a query table backed by transactional memory
 
@@ -31,16 +29,12 @@ Finally, the tuples stored in the query table are partitioned by the **name** fi
 
 ![Schema](images/studioschema.png)
 
-<a name="design-notes"></a>
-
 ## Design notes
 
 Processing is always on the local node, hence :
 
 * Routing to a remote node is not required
 * Query scope is local ( ie not cluster wide )
-
-<a name="running-this-sample-from-tibco-streambase-studio-trade"></a>
 
 ## Running this sample from TIBCO StreamBase&reg; Studio
 
@@ -52,15 +46,11 @@ of the application definition and node deployment configuration files.
 
 ![RunFromStudio](images/studio.gif)
 
-<a name="building-this-sample-from-tibco-streambase-studio-trade-and-running-the-unit-test-cases"></a>
-
 ## Building this sample from TIBCO StreamBase&reg; Studio and running the unit test cases
 
 Use the **Run As -> EventFlow Fragment Unit Test** menu option to build from TIBCO StreamBase&reg; Studio :
 
 ![RunFromStudio](images/studiounit.gif)
-
-<a name="building-this-sample-from-the-command-line-and-running-the-unit-test-cases"></a>
 
 ## Building this sample from the command line and running the unit test cases
 

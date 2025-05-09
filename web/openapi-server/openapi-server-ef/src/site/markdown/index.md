@@ -2,22 +2,18 @@
 
 This sample describes how to use a WAR which is created with OpenAPI Code Generation tool in an EventFlow project.
 
-* [Create a WAR file with OpenAPI Code Generation tool](#create-war)
-* [Create a no-op EventFlow fragment and declare the WAR as a dependency](#declare-the-war-as-a-dependency)
-* [Running this sample from TIBCO StreamBase&reg; Studio](#running-this-sample-from-tibco-streambase-studiotrade)
-* [Using "epadmin display web" command to retrieve information about web server](#using-epadmin-display-web-command-to-retrieve-information)
-* [Using HelpUI to send request to test endpoint](#using-helpui)
+* [Create a WAR file with OpenAPI Code Generation tool](#create-a-war-file-with-openapi-code-generation-tool)
+* [Create an EventFlow fragment and declare the WAR as a dependency](#create-an-eventflow-fragment-and-declare-the-war-as-a-dependency)
+* [Running this sample from TIBCO StreamBase® Studio](#running-this-sample-from-tibco-streambase-reg-studio)
+* [Using "epadmin display web" command to retrieve Web Help UI Address](#using-epadmin-display-web-command-to-retrieve-web-help-ui-address)
+* [Send request to the /test endpoint provided by the WAR](#send-request-to-the-test-endpoint-provided-by-the-war)
 * [Building this sample from the command line and running the integration test cases](#building-this-sample-from-the-command-line-and-running-the-integration-test-cases)
 
-
-<a name="create-war"></a>
 
 ## Create a WAR file with OpenAPI Code Generation tool
 See [openapi-server-war](../../../../openapi-server-war/src/site/markdown/index.md).
 The WAR provides a GET endpoint which path is **http://{webserver-hostname}:{webserver-port-number}/openapi-server-war/test**.
 
-
-<a name="declare-the-war-as-a-dependency"></a>
 
 ## Create an EventFlow fragment and declare the WAR as a dependency
 This sample contains [a no-op EventFlow file](../../main/eventflow/com/tibco/ep/samples/web/openapi/server/eventflow/Demo.sbapp),  
@@ -31,22 +27,17 @@ way as any other maven dependency:
         <version>1.0.0</version>
         <type>war</type>
     </dependency>
-``` 
-
-<a name="running-this-sample-from-tibco-streambase-studiotrade"></a>
+```
 
 ## Running this sample from TIBCO StreamBase&reg; Studio
 Use the **Run As -> EventFlow Fragment** menu option to run in TIBCO StreamBase&reg; Studio:
 
-
-<a name="using-epadmin-display-web-command-to-retrieve-information"></a>
 
 ## Using "epadmin display web" command to retrieve Web Help UI Address
 The information we need is **Web Help UI Address**
 ![DisplayWeb](images/epadmin.gif)
 
 
-<a name="using-helpui"></a>
 ## Send request to the /test endpoint provided by the WAR
 Open a web browser, enter **Web Help UI Address**, select **openapi-server-war** from the **Select a Web Service** drop-down list, 
 choose the **GET /test** endpoint and click **Try it out**. Then click **Execute** button, a popping up window will ask for user name and password. 
@@ -54,8 +45,6 @@ Since we use default-realm in this sample, which does NOT require password when 
 just enter computer username as the username, and no password is needed, then "Hello, TIBCO!" shows up in the **Responses** section with Code 200.
 ![Help UI](images/helpui.gif)
 
-
-<a name="building-this-sample-from-the-command-line-and-running-the-integration-test-cases"></a>
 
 ## Building this sample from the command line and running the integration test cases
 

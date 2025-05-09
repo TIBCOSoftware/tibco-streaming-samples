@@ -14,6 +14,7 @@ collector registry.
 ## Making the packaging type as war
 
 The project's packaging type is **war**.
+
 ```xml
     <groupId>com.tibco.ep.samples.web</groupId>
     <artifactId>prometheus-metrics-war</artifactId>

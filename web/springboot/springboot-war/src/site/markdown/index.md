@@ -4,11 +4,9 @@ This sample describes how to use Spring Boot to build a WAR Archive (.war).
 The WAR contains a GET endpoint **"springboot-war/test"**, which returns "Hello, TIBCO!" when 
 gets called. The resulting archive can be used in a downstream EventFlow fragment.
 
-* [Create a GET endpoint](#create-endpoint)
+* [Create a GET endpoint](#create-a-get-endpoint)
 * [Generate WAR archive](#generate-war-archive)
-* [Building this WAR from the command line](#building-this-war-from-the-command-line)
-
-<a name="create-endpoint"></a>
+* [Building this WAR from the command line](#building-this-sample-from-the-command-line)
 
 ## Create a GET endpoint
 
@@ -50,11 +48,10 @@ The [sample java code folder](../../../main/java/com/tibco/ep/samples/web/spring
 provides a GET endpoint to response "Hello, TIBCO!" when gets called.
 
 
-<a name="generate-war-archive"></a>
-
 ## Generate WAR archive
 
 The project's packaging type is **war**.
+
 ```xml
     <groupId>com.tibco.ep.samples.web</groupId>
     <artifactId>springboot-war</artifactId>
@@ -62,6 +59,7 @@ The project's packaging type is **war**.
     <version>1.0.0</version>
 
 ```
+
 The [maven war plugin](https://maven.apache.org/plugins/maven-war-plugin/) 
 is used to build the WAR archive (.war).  The following maven build rule is used:
 
@@ -77,8 +75,6 @@ is used to build the WAR archive (.war).  The following maven build rule is used
         </plugin>
     </plugins>
 ```
-
-<a name="building-this-war-from-the-command-line"></a>
 
 ## Building this sample from the command line
 

@@ -26,7 +26,7 @@ This component is available via maven.  Include in your pom.xml file the followi
         </dependencyManagement>
         ...
     </project>
----
+```
 
 ---
 Copyright (c) 2018-2023 Cloud Software Group, Inc.

@@ -5,11 +5,9 @@ from the health check web service OpenAPI specification yaml file by using OpenA
 The generated web client is in Java and supported by Jersey framework.  
 It can be used for building requests or accessing the response from the Streaming node server health check web service. 
 
-* [Add the health check web service OpenAPI specification YAML file](#add-healthcheck-openapi-specification)
-* [Add the required maven plugin and dependencies](#add-maven-plugin-and-dependecies)
-* [Build this jar from the command line](#build-this-war-from-the-command-line)
-
-<a name="add-healthcheck-openapi-specification"></a>
+* [Add the health check web service OpenAPI specification YAML file](#add-the-health-check-web-service-openapi-specification-yaml-file)
+* [Add the required maven plugin and dependencies](#add-the-required-maven-plugin-and-dependencies)
+* [Build this jar from the command line](#building-this-sample-from-the-command-line-and-running-the-integration-test-cases)
 
 ## Add the health check web service OpenAPI specification YAML file 
 
@@ -18,12 +16,11 @@ generate the web client. In this example, we use the Streaming node server [Heal
 OpenAPI specification YAML file](../../main/resources/HealthCheck-REST-API-Definition.yaml) 
 
 
-<a name="add-maven-plugin-and-dependecies"></a>
-
 ## Add the required maven plugin and dependencies
 
 The [openapi-generator-maven-plugin](https://mvnrepository.com/artifact/org.openapitools/openapi-generator-maven-plugin) 
 is used to support this OpenAPI generator project. The following maven build rule is used:
+
 ```xml
     <plugin>
         <groupId>org.openapitools</groupId>
@@ -59,8 +56,6 @@ is used to support this OpenAPI generator project. The following maven build rul
 
 Add the required maven dependencies for the client being generated.  
 see details in [pom.xml](../../../pom.xml)
-
-<a name="build-this-war-from-the-command-line"></a>
 
 ## Building this sample from the command line and running the integration test cases
 

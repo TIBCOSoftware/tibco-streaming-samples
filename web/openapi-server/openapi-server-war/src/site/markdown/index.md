@@ -3,12 +3,11 @@
 This sample describes how to use OpenAPI Code Generation tool to create a server stub from OpenAPI specification documentation, 
 and package it as a WAR. The resulting archive can then be used in a downstream EventFlow fragment.
 
-* [Add a sample OpenAPI specification YAML file](#add-openapi-specification)
-* [Add the OpenAPI generator maven plugin and dependencies](#add-maven-plugin-and-dependecies)
-* [Implement the generated interface and add web.xml](#implement-interface-and-add-web.xml)
-* [Build this WAR from the command line](#build-this-war-from-the-command-line)
-
-<a name="add-openapi-specification"></a>
+* [Add a sample OpenAPI specification YAML file](#add-a-sample-openapi-specification-yaml-file)
+* [Add the OpenAPI generator maven plugin and dependencies](#add-openapi-generator-maven-plugin-and-dependencies)
+* [Implement the generated interface and add web.xml](#implement-the-generated-interface-and-add-web-xml)
+* [Generate WAR archive](#generate-war-archive)
+* [Building this sample from the command line](#building-this-sample-from-the-command-line)
 
 ## Add a sample OpenAPI specification YAML file 
 
@@ -18,12 +17,11 @@ defines a **/test** endpoint. This endpoint responses a **Message** object in JS
 The **Message** object has a single string field.
 
 
-<a name="add-maven-plugin-and-dependecies"></a>
-
 ## Add OpenAPI generator maven plugin and dependencies
 
 The [openapi-generator-maven-plugin](https://mvnrepository.com/artifact/org.openapitools/openapi-generator-maven-plugin) 
 is used to support this OpenAPI generator project. The following maven build rule is used:
+
 ```xml
     <plugin>
         <groupId>org.openapitools</groupId>
@@ -61,8 +59,6 @@ Add the required maven dependencies for the code being generated.
 see details in [pom.xml](../../../pom.xml)
 
 
-<a name="implement-interface-and-add-web.xml"></a>
-
 ## Implement the generated interface and add web.xml
 
 To enable the generated interface, we add [TestApiImpl.java](../../main/java/com/tibco/ep/samples/web/openapi/server/apiimpl/TestApiImpl.java).  
@@ -71,18 +67,17 @@ a JSON format **com.tibco.ep.samples.web.openapi.server.model.Message** instance
 We also add [web.xml](../../main/webapp/WEB-INF/web.xml) for supporting servlet mapping. 
 
 
-<a name="generate-war-archive"></a>
-
 ## Generate WAR archive
 
 The project's packaging type is **war**.
+
 ```xml
     <groupId>com.tibco.ep.samples.web</groupId>
     <artifactId>openapi-server-war</artifactId>
     <packaging>war</packaging>
     <version>1.0.0</version>
-
 ```
+
 The [maven war plugin](https://maven.apache.org/plugins/maven-war-plugin/) is used to build the WAR (.war).  The following maven build rule is used:
 
 ```xml
@@ -93,8 +88,6 @@ The [maven war plugin](https://maven.apache.org/plugins/maven-war-plugin/) is us
         </plugin>
     </plugins>
 ```
-
-<a name="build-this-war-from-the-command-line"></a>
 
 ## Building this sample from the command line
 

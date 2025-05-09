@@ -3,17 +3,15 @@
 This sample describes how to deploy an application archive containing an EventFlow fragment to Docker.
 
 * [Prerequisites](#prerequisites)
-* [Creating an application archive project for Docker from TIBCO StreamBase&reg; Studio](#creating-an-application-archive-project-for-docker-from-tibco-streambase-studio-trade)
+* [Creating an application archive project for Docker from TIBCO StreamBase® Studio](#creating-an-application-archive-project-for-docker-from-tibco-streambase-reg-studio)
 * [Containers and nodes](#containers-and-nodes)
 * [Changes to the default docker configurations](#changes-to-the-default-docker-configurations)
-* [Building and running from TIBCO StreamBase&reg; Studio](#building-and-running-from-tibco-streambase-studio-trade)
+* [Building and running from TIBCO StreamBase® Studio](#building-and-running-from-tibco-streambase-reg-studio)
 * [Building this sample from the command line and running the integration test cases](#building-this-sample-from-the-command-line-and-running-the-integration-test-cases)
 * [Example docker commands](#example-docker-commands)
 * [Potential problems](#potential-problems)
 
-See also [Docker section in TIBCO&reg; Streaming documentation](https://docs.tibco.com/pub/str/11.1.1/doc/html/admin/docker-create.html).
-
-<a id="prerequisites"></a>
+See also [Docker section in TIBCO® Streaming documentation](https://docs.tibco.com/pub/str/11.1.1/doc/html/admin/docker-create.html).
 
 ## Prerequisites
 
@@ -25,8 +23,6 @@ On MacOS, the resources available to docker may need to be increased beyond the 
 CPUs and Memory settings on the Advanced tab of Docker preferences.
 
 ![resources](images/resources.png)
-
-<a id="creating-an-application-archive-project-for-docker-from-tibco-streambase-studio-trade"></a>
 
 ## Creating an application archive project for Docker from TIBCO StreamBase&reg; Studio
 
@@ -47,8 +43,6 @@ Such a project includes :
 
 Note that whilst this project will create a simple Docker image, changes to the project may be required for additional behaviours. 
 
-<a id="containers-and-nodes"></a>
-
 ## Containers and nodes
 
 In this sample we name the docker container as **A.ef-2node-app**,  which hosts the StreamBase node **A.ef-2node-app**, and **B.ef-2node-app**, which hosts the StreamBase node **B.ef-2node-app**.  A Docker network **example.com** connects the nodes together :
@@ -56,8 +50,6 @@ In this sample we name the docker container as **A.ef-2node-app**,  which hosts 
 ![nodes](images/two-node-docker.svg)
 
 The two containers have network access to each other, but not to the docker host.
-
-<a id="changes-to-the-default-docker-configurations"></a>
 
 ## Changes to the default docker configurations
 
@@ -122,8 +114,6 @@ and include running **epadmin display cluster** when the nodes are started - thi
     </exec>
 ```
 
-<a id="building-and-running-from-tibco-streambase-studio-trade"></a>
-
 ## Building and running from TIBCO StreamBase&reg; Studio
 
 Use the **Run As -> Maven install** menu option to build from TIBCO StreamBase&reg; Studio or Run As shortcut.  Tests can
@@ -137,15 +127,11 @@ manage containers :
 
 ![maven](images/studio-run.gif)
 
-<a id="building-this-sample-from-the-command-line-and-running-the-integration-test-cases"></a>
-
 ## Building this sample from the command line and running the integration test cases
 
 Use the [maven](https://maven.apache.org) as **mvn install** to build from the command line or Continuous Integration system :
 
 ![maven](images/maven.gif)
-
-<a id="example-docker-commands"></a>
 
 ## Example docker commands
 
@@ -297,8 +283,6 @@ $ docker rm A.ef-2node-app
 $ docker stop B.ef-2node-app
 $ docker rm B.ef-2node-app
 ```
-
-<a id="potential-problems"></a>
 
 ## Potential problems
 

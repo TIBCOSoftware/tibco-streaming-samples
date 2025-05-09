@@ -3,14 +3,12 @@
 Testing proxy discovery configurations can be difficult since often in test hardware, networks
 do not block the discovery messages.  This sample describes how to use docker to test proxy discovery.
 
-* [Creating an application archive project for Docker from TIBCO StreamBase&reg; Studio](#creating-an-application-archive-project-for-docker-from-tibco-streambase-studio-trade)
+* [Creating an application archive project for Docker from TIBCO StreamBase® Studio](#creating-an-application-archive-project-for-docker-from-tibco-streambase-reg-studio)
 * [Machines and nodes](#machines-and-nodes)
 * [Changes to the default configurations](#changes-to-the-default-configurations)
 * [Building this sample from the command line and running the integration test cases](#building-this-sample-from-the-command-line-and-running-the-integration-test-cases)
 
-See also [Docker section in TIBCO&reg; Streaming documentation](https://docs.tibco.com/pub/str/10.4.0/doc/html/admin/part-docker.html).
-
-<a name="creating-an-application-archive-project-for-docker-from-tibco-streambase-studio-trade"></a>
+See also [Docker section in TIBCO® Streaming documentation](https://docs.tibco.com/pub/str/10.4.0/doc/html/admin/part-docker.html).
 
 ## Creating an application archive project for Docker from TIBCO StreamBase&reg; Studio
 
@@ -29,8 +27,6 @@ Such a project includes :
 * [Application definition configuration](../../main/configurations/app.conf) that defines nodeType docker to use System V shared memory
 * [Node deployment configuration](../../main/configurations/defaultnode.conf) that uses the above nodeType
 
-<a name="machines-and-nodes"></a>
-
 ## Machines and nodes
 
 In this sample we name the docker machines as **A.example.com**,  which hosts the StreamBase node **A.pd-test-app**, and **B.example.com**, which hosts the StreamBase node **B.pd-test-app**.
@@ -38,8 +34,6 @@ In this sample we name the docker machines as **A.example.com**,  which hosts th
 ![nodes](images/two-node-docker.svg)
 
 A firewall is configured to block the discovery network packets to test proxy discovery.
-
-<a name="changes-to-the-default-configurations"></a>
 
 ## Changes to the default configurations
 
@@ -142,7 +136,7 @@ The maven [pom.xml](../../../pom.xml) file is updated to detect if docker is ins
             <skipDockerTests>${skipTests}</skipDockerTests>
         </properties>
     </profile>
-``` 
+```
 
 and include running **epadmin display cluster** when the nodes are started - this shows if the nodes are connected to each other via the proxy discovery configuration :
 
@@ -151,8 +145,6 @@ and include running **epadmin display cluster** when the nodes are started - thi
         <postStart>epadmin servicename=B.${project.artifactId} display cluster</postStart>
     </exec>
 ```
-
-<a name="building-this-sample-from-the-command-line-and-running-the-integration-test-cases"></a>
 
 ## Building this sample from the command line and running the integration test cases
 

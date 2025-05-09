@@ -4,11 +4,9 @@ This sample describes how to build a WAR (.war) which contains a WebSocket endpo
 WebSocket connection is built, this endpoint returns the same string as what it receives with prefix 
 "Received message: ".  The resulting archive can then be used in a downstream EventFlow fragment.
 
-* [Create a WebSocket endpoint](#create-websocket-endpoint)
+* [Create a WebSocket endpoint](#create-a-websocket-endpoint)
 * [Generate WAR archive](#generate-war-archive)
-* [Building this WAR from the command line](#building-this-war-from-the-command-line)
-
-<a name="create-websocket-endpoint"></a>
+* [Building this WAR from the command line](#building-this-sample-from-the-command-line)
 
 ## Create a WebSocket endpoint
 
@@ -27,11 +25,10 @@ Add the following maven dependency into the pom.xml, the scope should be provide
 The [sample java code](../../main/java/com/tibco/ep/samples/web/websocket/websocketwar/WebSocketEndpoint.java)([html](https://github.com/TIBCOSoftware/tibco-streaming-samples/tree/master/web/websocket/websocket-war/src//main/java/com/tibco/ep/samples/web/websocket/websocketwar/WebSocketEndpoint.java))  provides a WebSocket endpoint to intercept the received message as a string and send a response message with "Received messages:" prefix.
 
 
-<a name="generate-war-archive"></a>
-
 ## Generate WAR archive
 
 The project's packaging type is **war**.
+
 ```xml
     <groupId>com.tibco.ep.samples.web</groupId>
     <artifactId>websocket-war</artifactId>
@@ -39,6 +36,7 @@ The project's packaging type is **war**.
     <version>1.0.0</version>
 
 ```
+
 The [maven war plugin](https://maven.apache.org/plugins/maven-war-plugin/) is used to build the WAR (.war).  The following maven build rule is used:
 
 ```xml
@@ -53,8 +51,6 @@ The [maven war plugin](https://maven.apache.org/plugins/maven-war-plugin/) is us
         </plugin>
     </plugins>
 ```
-
-<a name="building-this-war-from-the-command-line"></a>
 
 ## Building this sample from the command line
 

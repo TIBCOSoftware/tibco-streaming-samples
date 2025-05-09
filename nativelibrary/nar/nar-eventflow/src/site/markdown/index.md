@@ -6,10 +6,8 @@ This sample describes how to use a Native ARchive (.nar) dependency in an EventF
 * [Declare a java wrapper class](#declare-a-java-wrapper-class)
 * [Provide a engine configuration for EventFlow use](#provide-a-engine-configuration-for-eventflow-use)
 * [Using in EventFlow](#using-in-eventflow)
-* [Building this sample from TIBCO StreamBase&reg; Studio and running the unit test cases](#building-this-sample-from-tibco-streambase-studio-trade-and-running-the-unit-test-cases)
+* [Building this sample from TIBCO StreamBase® Studio and running the unit test cases](#building-this-sample-from-tibco-streambase-reg-studio-and-running-the-unit-test-cases)
 * [Building this sample from the command line and running the unit test cases](#building-this-sample-from-the-command-line-and-running-the-unit-test-cases)
-
-<a name="declare-the-nar-as-a-dependency"></a>
 
 ## Declare the NAR as a dependency
 
@@ -24,7 +22,7 @@ classifier should be specified :
                     <type>nar</type>
                     <classifier>amd64-Linux-gpp-jni</classifier>
                 </dependency>
-``` 
+```
 
 In many situations, cross-platform development is required ( for example develop on desktop OS/X but 
 test on Linux servers ) - this can be achieved with maven profiles :
@@ -81,10 +79,7 @@ test on Linux servers ) - this can be achieved with maven profiles :
             </dependencies>
         </profile>
     </profiles>
-
 ```
-
-<a name="declare-a-java-wrapper-class"></a>
 
 ## Declare a java wrapper class
 
@@ -128,8 +123,6 @@ public class CallCpp {
 }
 ```
 
-<a name="provide-a-engine-configuration-for-eventflow-use"></a>
-
 ## Provide a engine configuration for EventFlow use
 
 A engine configuration is required to declare the functions available :
@@ -170,23 +163,17 @@ configuration =
 }
 ```
 
-<a name="using-in-eventflow"></a>
-
 ## Using in EventFlow
 
 These functions can now be used in EventFlow :
 
 ![studio](images/studioFunction.png)
 
-<a name="building-this-sample-from-tibco-streambase-studio-trade-and-running-the-unit-test-cases"></a>
-
 ## Building this sample from TIBCO StreamBase&reg; Studio and running the unit test cases
 
 Use the **Run As -> Maven install** menu option to build from TIBCO StreamBase&reg; Studio :
 
 ![studio](images/studiounit.gif)
-
-<a name="building-this-sample-from-the-command-line-and-running-the-unit-test-cases"></a>
 
 ## Building this sample from the command line and running the unit test cases
 

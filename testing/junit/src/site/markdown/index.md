@@ -6,18 +6,14 @@ This sample describes how to write junit unit tests for EventFlow fragments.
 * [Using the test framework](#using-the-test-framework)
 * [Starting, stopping and loading configuration](#starting-stopping-and-loading-configuration)
 * [Test cases](#test-cases)
-* [Building this sample from TIBCO StreamBase&reg; Studio and running the unit test cases](#building-this-sample-from-tibco-streambase-studio-trade-and-running-the-unit-test-cases)
+* [Building this sample from TIBCO StreamBase® Studio and running the unit test cases](#building-this-sample-from-tibco-streambase-reg-studio-and-running-the-unit-test-cases)
 * [Building this sample from the command line and running the unit test cases](#building-this-sample-from-the-command-line-and-running-the-unit-test-cases)
-
-<a name="eventflow-under-test"></a>
 
 ## EventFlow under test
 
 In this sample the following simple EventFlow fragment is used :
 
 ![Goldylocks](images/Goldylocks.png)
-
-<a name="using-the-test-framework"></a>
 
 ## Using the test framework
 
@@ -41,8 +37,6 @@ This allows access to :
 * [Transactional memory detection](http://devzone.tibco.com/sites/streambase/latest/sb/sb-product/documentation/reference/dtm/com/tibco/ep/testing/framework/UnitTest.html#initialize--)
 * [Test case timeout handling](http://devzone.tibco.com/sites/streambase/latest/sb/sb-product/documentation/reference/dtm/com/tibco/ep/testing/framework/UnitTest.html#initialize--)
 * [transactional abort mode](http://devzone.tibco.com/sites/streambase/latest/sb/sb-product/documentation/reference/dtm/com/tibco/ep/testing/framework/UnitTest.html#initialize--)
-
-<a name="starting-stopping-and-loading-configuration"></a>
 
 ## Starting, stopping and loading configuration
 
@@ -112,8 +106,6 @@ Any configuration required by the unit test case should be loaded and activated 
     }
 ```
 
-<a name="test-cases"></a>
-
 ## Test cases
 
 Junit test cases can use the [unittest](http://devzone.tibco.com/sites/streambase/latest/sb/sb-product/documentation/reference/sb/com/streambase/sb/unittest/package-frame.html)
@@ -141,8 +133,6 @@ API to enqueue tubles and verify the results :
     }
 ```
 
-<a name="building-this-sample-from-tibco-streambase-studio-trade-and-running-the-unit-test-cases"></a>
-
 ## Building this sample from TIBCO StreamBase&reg; Studio and running the unit test cases
 
 Use the **Run As -> EventFlow Fragment Unit Test** menu option to build from TIBCO StreamBase&reg; Studio :
@@ -150,8 +140,6 @@ Use the **Run As -> EventFlow Fragment Unit Test** menu option to build from TIB
 ![RunFromStudio](images/studiounit.gif)
 
 Results are displayed in the console and junit windows.
-
-<a name="building-this-sample-from-the-command-line-and-running-the-unit-test-cases"></a>
 
 ## Building this sample from the command line and running the unit test cases
 

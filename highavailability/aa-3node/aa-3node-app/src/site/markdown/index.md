@@ -9,8 +9,6 @@ This sample describes how to deploy an EventFlow fragment in a 3-node active act
 * [Failure scenarios](#failure-scenarios)
 * [Building this sample from the command line and running the integration test cases](#building-this-sample-from-the-command-line-and-running-the-integration-test-cases)
 
-<a name="machines-and-nodes"></a>
-
 ## Machines and nodes
 
 In this sample we name the machines as **A**,  which hosts the StreamBase node **A**, 
@@ -22,8 +20,6 @@ A client that uses the service can connect to any machine.
 
 ( service names are omitted in descriptions for clarity )
 
-<a name="data-partitioning"></a>
-
 ## Data partitioning
 
 To support an active active configuration, the query table data must be replicated between the nodes.  
@@ -33,8 +29,6 @@ partitions are created to evenly balance and replicate data around the cluster :
 ![partitions](images/three-node-active-active-partitions.svg)
 
 ( only 3 virtual partitions are shown - the default is 64 )
-
-<a name="define-the-node-deployment-configuration"></a>
 
 ## Define the node deployment configuration
 
@@ -71,31 +65,25 @@ configuration = {
 Note that **percentageOfVotes** could be used instead.  An alternative configuration for quorums could
 use **quorumMemberPattern**.
 
-<a name="design-notes"></a>
-
 ## Design notes
 
 * The default dynamic data distribution policy is chosen to distribute the data across the cluster
 * Most of the data distribution policy and the availability zone configuration values are not set since defaults work well
 
-<a name="failure-scenarios"></a>
-
 ## Failure scenarios
 
 The main failure cases for this deployment are outlined below :
 
-Failure case   | Behavior on failure | Steps to resolve | Notes
---- | --- | --- | ---
-Machine A fails | 1 Client is disconnected<br/>2 Virtual partitions become active on B & C<br/>3 Client may connect to B or C and continue  | 1 Fix machine A<br/>2 Use **epadmin install node** and **epadmin start node** | 1 No data loss<br/>2 No service loss
-Machine B fails | 1 Client is disconnected<br/>2 Virtual partitions become active on A & C<br/>3 Client may connect to A or C and continue  | 1 Fix machine B<br/>2 Use **epadmin install node** and **epadmin start node** | 1 No data loss<br/>2 No service loss
-Machine C fails | 1 Client is disconnected<br/>2 Virtual partitions become active on A & B<br/>3 Client may connect to A or B and continue  | 1 Fix machine C<br/>2 Use **epadmin install node** and **epadmin start node** | 1 No data loss<br/>2 No service loss
-Network fails to A | 1 Quorum on A fails and takes itself offline to avoid multi-master | 1 Fix network<br/>2 Use **epadmin restore availabilityzone** | 1 No data loss<br/>2 No service loss
-Network fails to B | 1 Quorum on B fails and takes itself offline to avoid multi-master | 1 Fix network<br/>2 Use **epadmin restore availabilityzone** | 1 No data loss<br/>2 No service loss
-Network fails to C | 1 Quorum on C fails and takes itself offline to avoid multi-master | 1 Fix network<br/>2 Use **epadmin restore availabilityzone** | 1 No data loss<br/>2 No service loss
+| Failure case       | Behavior on failure | Steps to resolve | Notes |
+| ------------------ | ------------------- | ---------------- | ----- |
+| Machine A fails    | - Client is disconnected<br>- Virtual partitions become active on B & C<br>- Client may connect to B or C and continue | 1. Fix machine A<br>2. Use **epadmin install node** and **epadmin start node** | - No data loss<br>- No service loss |
+| Machine B fails    | - Client is disconnected<br>- Virtual partitions become active on A & C<br>- Client may connect to A or C and continue | 1. Fix machine B<br>2. Use **epadmin install node** and **epadmin start node** | - No data loss<br>- No service loss |
+| Machine C fails    | - Client is disconnected<br>- Virtual partitions become active on A & B<br>- Client may connect to A or B and continue | 1. Fix machine C<br>2. Use **epadmin install node** and **epadmin start node** | - No data loss<br>- No service loss |
+| Network fails to A | Quorum on A fails and takes itself offline to avoid multi-master | 1. Fix network<br>2. Use **epadmin restore availabilityzone** | - No data loss<br>- No service loss</ul> |
+| Network fails to B | Quorum on B fails and takes itself offline to avoid multi-master | 1. Fix network<br>2. Use **epadmin restore availabilityzone** | - No data loss<br>- No service loss</ul> |
+| Network fails to C | Quorum on C fails and takes itself offline to avoid multi-master | 1. Fix network<br>2. Use **epadmin restore availabilityzone** | - No data loss<br>- No service loss</ul> |
 
 With a 3 node configuration node quorums can be applied to avoid a multi-master scenario.
-
-<a name="building-this-sample-from-the-command-line-and-running-the-integration-test-cases"></a>
 
 ## Building this sample from the command line and running the integration test cases
 

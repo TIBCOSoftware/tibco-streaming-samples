@@ -2,22 +2,18 @@
 
 This sample describes how to use a WAR which has a WebSocket endpoint in an EventFlow project.
 
-* [Create a WAR file which has a web socket endpoint](#create-websocket-endpoint)
-* [Create a blank EventFlow fragment and declare the WAR as a dependency](#declare-the-war-as-a-dependency)
-* [Running this sample from TIBCO StreamBase&reg; Studio](#running-this-sample-from-tibco-streambase-studiotrade)
-* [Using "epadmin display web" command to retrieve information about web server](#using-epadmin-display-web-command-to-retrieve-information)
+* [Create a WAR file which has a web socket endpoint](#create-a-war-file-which-has-web-socket-endpoint)
+* [Create a blank EventFlow fragment and declare the WAR as a dependency](#create-an-eventflow-fragment-and-declare-the-war-as-a-dependency)
+* [Running this sample from TIBCO StreamBase® Studio](#running-this-sample-from-tibco-streambase-reg-studio)
+* [Using "epadmin display web" command to retrieve information about web server](#using-epadmin-display-web-command-to-retrieve-web-information)
 * [Using "WebSocketClient"  to to connect to the WebSocket endpoint](#using-websocketclient-to-connect-to-the-websocket-endpoint)
 * [Building this sample from the command line and running the integration test cases](#building-this-sample-from-the-command-line-and-running-the-integration-test-cases)
 
-
-<a name="create-websocket-endpoint"></a>
 
 ## Create a WAR file which has web socket endpoint
 See [websocket-war](../../../../websocket-war/src/site/markdown/index.md).
 The WAR provides a GET endpoint which path is **http://<webserver-hostname>:<webserver-port-number>/websocket-war/test**.
 
-
-<a name="declare-the-war-as-a-dependency"></a>
 
 ## Create an EventFlow fragment and declare the WAR as a dependency
 In this sample, this sample contains [a no-op EventFlow file](../../main/eventflow/com/tibco/ep/samples/web/websocket/eventflow/WebSocket.sbapp),  
@@ -31,24 +27,20 @@ way as any other maven dependency:
         <version>1.0.0</version>
         <type>war</type>
     </dependency>
-``` 
-
-<a name="running-this-sample-from-tibco-streambase-studiotrade"></a>
+```
 
 ## Running this sample from TIBCO StreamBase&reg; Studio
 Use the **Run As -> EventFlow Fragment** menu option to run in TIBCO StreamBase&reg; Studio:
+
 ![RunFromStudio](images/studio.gif)
 
 
-<a name="using-epadmin-display-web-command-to-retrieve-information"></a>
-
 ## Using "epadmin display web" command to retrieve web information.
 The information we need is **hostname**, **port number**, **web service name**
+
 ![DisplayWeb](images/epadmin.gif)
 
-<a name="using-websocketclient-to-connect-to-the-websocket-endpoint"></a>
-
-## Using [WebSocketClient](../../test/resources/WebSocketClient.html) to connect to the WebSocket endpoint
+## Using WebSocketClient to connect to the WebSocket endpoint
 Open [WebSocketClient](../../test/resources/WebSocketClient.html) file in a web browser which supports WebSocket, 
 fill the tables with the information got in last step, since we use **default-realm** in this sample, which does NOT 
 require password when a connection originates from a trusted address, no password is entered. 
@@ -56,8 +48,6 @@ Then click **connect** button. After connection is built, type message in Messag
 and click **Send Message** button. Click **disconnect** for disconnecting from the WebSocket endpoint.
 ![ConnectToWSEndpoint](images/endpoint.gif)
 
-
-<a name="building-this-sample-from-the-command-line-and-running-the-integration-test-cases"></a>
 
 ## Building this sample from the command line and running the integration test cases
 

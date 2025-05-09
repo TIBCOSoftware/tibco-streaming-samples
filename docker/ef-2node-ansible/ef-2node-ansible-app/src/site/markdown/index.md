@@ -3,18 +3,16 @@
 This sample describes how to deploy an application archive containing an EventFlow fragment to Docker managed by Ansible.
 
 * [Prerequisites](#prerequisites)
-* [Loading this sample in TIBCO StreamBase&reg; Studio](#loading-this-sample-in-tibco-streambase-studio-trade)
+* [Loading this sample in TIBCO StreamBase® Studio](#loading-this-sample-in-tibco-streambase-reg-studio)
 * [Ansible part of this project](#ansible-part-of-this-project)
 * [Containers and nodes](#containers-and-nodes)
-* [Changes to the default pom.xml file - profiles](#changes-to-the-default-pom-file-profiles)
-* [Building and running from TIBCO StreamBase&reg; Studio](#building-and-running-from-tibco-streambase-studio-trade)
+* [Changes to the default pom.xml file - profiles](#changes-to-the-default-pom-xml-file-profiles)
+* [Building and running from TIBCO StreamBase® Studio](#building-and-running-from-tibco-streambase-reg-studio)
 * [Example of Ansible task and maven plugin configuration](#example-of-ansible-task-and-maven-plugin-configuration)
 * [Building this sample from the command line and running the integration test cases](#building-this-sample-from-the-command-line-and-running-the-integration-test-cases)
 * [Additional Ansible playbooks](#additional-ansible-playbooks)
 
-See also [Docker section in TIBCO&reg; Streaming documentation](https://docs.tibco.com/pub/str/latest/doc/html/admin/part-docker.html).
-
-<a name="prerequisites"></a>
+See also [Docker section in TIBCO® Streaming documentation](https://docs.tibco.com/pub/str/latest/doc/html/admin/part-docker.html).
 
 ## Prerequisites
 
@@ -27,11 +25,9 @@ Ansible cannot run on a Windows host natively. Please see more information under
 
 All Ansible playbooks are executed based on configuration file and inventory file. Both files are included in the project. Please see more detailed description in [Ansible part of this project paragraph](#ansible-part-of-this-project) below. 
 
-<a name="loading-this-sample-in-tibco-streambase-studio-trade"></a>
-
 ## Loading this sample in TIBCO StreamBase&reg; Studio
 
-To be able to run this sample in TIBCO StreamBase Studio™ please refer to [Using TIBCO Streambase Studio GitHub page](https://github.com/TIBCOSoftware/tibco-streaming-samples/blob/master/docs/studio.md).
+To be able to run this sample in TIBCO StreamBase&reg; Studio please refer to [Using TIBCO Streambase Studio GitHub page](https://github.com/TIBCOSoftware/tibco-streaming-samples/blob/master/docs/studio.md).
 
 Below you can find a list of files this project is based on:
 
@@ -45,8 +41,6 @@ Below you can find a list of files this project is based on:
 
 Note that whilst this project will create a simple Docker image, changes to the project may be required for additional behaviours. 
 
-<a name="ansible-part-of-this-project"></a>
-
 ## Ansible part of this project
 
 In this sample we have one playbook with set of tasks.
@@ -54,6 +48,7 @@ When executing entire playbook, tasks in first section will build the work direc
 If you prefer to skip the second and third part of this playbook please check skipTests box under SB Studio or when in the project folder execute **mvn -DskipTests=true install** in command line.
 
 In this project, all Ansible files are located in ../src/main/ansible folder.
+
 ```shell
 .
 ├── additional-playbooks
@@ -65,6 +60,7 @@ In this project, all Ansible files are located in ../src/main/ansible folder.
 ├── inventory
 └── project-playbook.yml
 ```
+
 Files: 
 - [ansible.cfg](../../main/ansible/ansible.cfg) - contains basic ansible configuration for this project to run locally
 - [inventory](../../main/ansible/inventory) - contains only one - localhost - as a target for all playbook tasks 
@@ -80,8 +76,6 @@ To complete the prerequisites steps, please copy ansible.cfg and inventory files
 
 Check [playbook tasks](../../site/markdown/playbook-tasks.md) to see a selected Ansible tasks with brief description.
 
-<a name="containers-and-nodes"></a>
-
 ## Containers and nodes
 
 In this sample we name the docker container as **A.ef-2node-ansible-app**,  which hosts the StreamBase node **A.ef-2node-ansible-app**, and **B.ef-2node-ansible-app**, which hosts the StreamBase node **B.ef-2node-ansible-app**.  A Docker network **example.com** connects the nodes together :
@@ -89,8 +83,6 @@ In this sample we name the docker container as **A.ef-2node-ansible-app**,  whic
 ![nodes](images/two-node-docker.svg)
 
 The two containers have network access to each other, but not to the docker host.
-
-<a name="changes-to-the-default-pom-file-profiles"></a>
 
 ## Changes to the default pom.xml file - profiles
 
@@ -134,9 +126,7 @@ installed, hence the maven [pom.xml](../../../pom.xml) file is updated to detect
 	    </modules>
 	</profile>
     </profiles>
-``` 
-
-<a name="building-and-running-from-tibco-streambase-studio-trade"></a>
+```
 
 ## Building and running from TIBCO StreamBase&reg; Studio
 
@@ -149,11 +139,10 @@ Tasks info from ansible playbook will show up on a console tab.
 
 ![maven](images/studio-run-ansible.jpg)
 
-<a name="example-of-ansible-task-and-maven-plugin-configuration"></a>
-
 ## Example of Ansible task and maven plugin configuration.
 
 Ansible tasks starting docker container A with options :
+
 ```
 - name: Start container A.{{ projectId }}
   docker_container:
@@ -167,7 +156,8 @@ Ansible tasks starting docker container A with options :
       env:
         STREAMING_NODENAME: A.{{ projectId }}
       state: started
-``` 
+```
+
 Variables and values from above task are passed by maven plugin to ansible playbook under the plugin configuration in pom.xml - see below.
 
 ```xml
@@ -199,8 +189,6 @@ Variables and values from above task are passed by maven plugin to ansible playb
           </executions>
     </plugin>
 ```
-
-<a name="building-this-sample-from-the-command-line-and-running-the-integration-test-cases"></a>
 
 ## Building this sample from the command line and running the integration test cases
 
@@ -352,8 +340,6 @@ Use the [maven commands](https://maven.apache.org) to build from the command lin
 ...
 ```
 
-<a name="additional-ansible-playbooks"></a>
-
 ## Additional Ansible playbooks.
 
 When you execute this project with _-DskipTest=true_ option you will have only docker images build (base and application). To test those images and start nodes, you can run ansible playbooks located in aditional-playbooks folder.
@@ -361,9 +347,11 @@ When you execute this project with _-DskipTest=true_ option you will have only d
 Those additional ansible playbooks are divided in three groups and contain only few tasks. For best results run them in order starting from #1.
 
 * [Start cluster](../../main/ansible/additional-playbooks/1-start_cluster.yml) playbook.
+
 ```shell
 	$ ansible-playbook 1-start_cluster.yml 
 ```
+
 ```ansible
 PLAY [Start Cluster] *************************************************************************
 
@@ -391,12 +379,15 @@ changed: [127.0.0.1]
 PLAY RECAP ***********************************************************************************
 127.0.0.1    : ok=5   changed=3   unreachable=0   failed=0   skipped=0   rescued=0   ignored=0 
 ```
+
 This playbook has three main tasks: create a network example.com, start container with node named: A.ef-2nod-e-ansible-app and start container with node named: B.ef-2nod-e-ansible-app. 
 
 * [Validate cluster](../../main/ansible/additional-playbooks/2-validate_cluster.yml) playbook.
+
 ```shell
 	$ ansible-playbook 2-validate_cluster.yml
 ```
+
 ```ansible
 PLAY [Validate Cluster] **********************************************************************
 
@@ -454,12 +445,15 @@ ok: [127.0.0.1] =>
 PLAY RECAP ***********************************************************************************
 127.0.0.1     : ok=6   changed=2   unreachable=0   failed=0   skipped=0   rescued=0  ignored=0
 ```
+
 This playbook has two main tasks: run epadmin command on both clusters.
 
 * [Stop cluster](../../main/ansible/additional-playbooks/3-stop_cluster.yml) playbook.
+
 ```shell
 	$ ansible-playbook 3-stop_cluster.yml
 ```
+
 ```ansible
 PLAY [Stop Cluster] **************************************************************************
 
@@ -481,8 +475,8 @@ changed: [127.0.0.1]
 PLAY RECAP ***********************************************************************************
 127.0.0.1     : ok=5   changed=3   unreachable=0   failed=0   skipped=0   rescued=0  ignored=0  
 ```
-This playbook has two main tasks: stop and remove both containers. Also it will remove the example.com network.
 
+This playbook has two main tasks: stop and remove both containers. Also it will remove the example.com network.
 
 ---
 Copyright (c) 2018-2023 Cloud Software Group, Inc.

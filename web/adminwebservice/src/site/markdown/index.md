@@ -7,10 +7,8 @@ authentication services provided by the node web server, which means a valid use
 must to be provided for requesting the endpoints.
 
 * [Start an EventFlow Fragment](#start-eventflow-fragment)
-* [Building this sample from TIBCO StreamBase&reg; Studio and running the unit test cases](#building-this-sample-from-tibco-streambase-studio-trade-and-running-the-unit-test-cases)
+* [Building this sample from TIBCO StreamBase® Studio and running the unit test cases](#building-this-sample-from-tibco-streambase-reg-studio-and-running-the-unit-test-cases)
 * [Building this sample from the command line and running the unit test cases](#building-this-sample-from-the-command-line-and-running-the-unit-test-cases)
-
-<a name="start-eventflow-fragment"></a>
 
 ## Start the EventFlow fragment sample
 
@@ -21,8 +19,6 @@ Since we use **default-realm** in this sample, which does NOT require password w
 just enter computer username as the username, and no password is needed,
 ![RunFromStudio](images/studio.gif)
 
-<a name="building-this-sample-from-tibco-streambase-studio-trade-and-running-the-unit-test-cases"></a>
-
 ## Building this sample from TIBCO StreamBase&reg; Studio and running the unit test cases
 
 Use the **Run As -> EventFlow Fragment Unit Test** menu option to build from TIBCO StreamBase&reg; Studio :
@@ -30,8 +26,6 @@ Use the **Run As -> EventFlow Fragment Unit Test** menu option to build from TIB
 ![RunTestFromStudio](images/studiounit.gif)
 
 Results are displayed in the console and junit windows.
-
-<a name="building-this-sample-from-the-command-line-and-running-the-unit-test-cases"></a>
 
 ## Building this sample from the command line and running the unit test cases
 

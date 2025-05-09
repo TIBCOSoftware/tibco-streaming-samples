@@ -8,8 +8,6 @@ This sample describes how to deploy an EventFlow fragment in a 2-node cluster aw
 * [Failure scenarios](#failure-scenarios)
 * [Building this sample from the command line and running the integration test cases](#building-this-sample-from-the-command-line-and-running-the-integration-test-cases)
 
-<a name="machines-and-nodes"></a>
-
 ## Machines and nodes
 
 In this sample we name the machines as **A**,  which hosts the StreamBase node **A**, 
@@ -17,20 +15,14 @@ and **B**, which hosts the StreamBase node **B**.
 
 ![nodes](images/two-node-cluster-aware.svg)
 
-<a name="define-the-node-deployment-configuration"></a>
-
 ## Define the node deployment configuration
 
 This sample uses no special node deployment configurations, so node deployment configuration
 file is not required.
 
-<a name="design-notes"></a>
-
 ## Design notes
 
 * The event flow fragment defines that only one state filter operator is running in the cluster
-
-<a name="failure-scenarios"></a>
 
 ## Failure scenarios
 
@@ -43,8 +35,6 @@ Machine B fails | No impact | 1 Fix machine B<br/>2 Use **epadmin install node**
 
 With a 2 node configuration node quorums don't apply hence a multi-master scenario is possible on network failure.
 Multiple network paths ( such as network bonding ) is recommended.
-
-<a name="building-this-sample-from-the-command-line-and-running-the-integration-test-cases"></a>
 
 ## Building this sample from the command line and running the integration test cases
 

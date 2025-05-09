@@ -9,21 +9,19 @@ node.
 * [Quick runthrough](#quick-runthrough)
 * [Prerequisites](#prerequisites)
 * [Clound native development lifecycle](#cloud-native-development-lifecycle)
-* [Creating an application archive project for Kubernetes from TIBCO Streaming Studio&trade;](#creating-an-application-archive-project-for-kubernetes-from-tibco-streaming-studio-trade)
+* [Creating an application archive project for Kubernetes from TIBCO StreamBase® Studio](#creating-an-application-archive-project-for-kubernetes-from-tibco-streambase-reg-studio)
 * [Kubernetes permissions](#kubernetes-permissions)
 * [Cluster monitor](#cluster-monitor)
 * [Containers and nodes](#containers-and-nodes)
 * [Service discovery](#service-discovery)
 * [Exposing REST endpoints via node port](#exposing-rest-endpoints-via-node-port)
 * [Exposing REST endpoints via ingress](#exposing-rest-endpoints-via-ingress)
-* [Building and running from TIBCO Streaming Studio&trade;](#building-and-running-from-tibco-streaming-studio-trade)
+* [Building and running from TIBCO StreamBase® Studio](#building-and-running-from-tibco-streambase-reg-studio)
 * [Building this sample from the command line and running the integration test cases](#building-this-sample-from-the-command-line-and-running-the-integration-test-cases)
 * [Deployment](#deployment)
 * [Runtime settings](#runtime-settings)
 * [Further Kubernetes commands](#further-kubernetes-commands)
 * [Alternative Kubernetes Implementations](#alternative-kubernetes-implementations)
-
-<a name="terminology"></a>
 
 ## Terminology
 
@@ -47,21 +45,17 @@ In this sample we are using various technologies with terminology that overlap a
     * **[Streaming Node](http://devzone.tibco.com/sites/streambase/latest/sb/sb-product/documentation/architectsguide/ch03s01.html)** - A Streaming container for engines
     * **[Streaming Engine](http://devzone.tibco.com/sites/streambase/latest/sb/sb-product/documentation/architectsguide/ch03s01.html)** - Executable context for a fragment
 
-<a name="overview"></a>
-
 ## Overview
 
 This sample consists of a basic eventflow fragment contained in an application archive.  Additional files are included to support deploying
 in a Kubernetes environment.  The sample shows how to build, deploy and use TIBCO Streaming applications in Kubernetes.
-
-<a name="quick_runthrough"></a>
 
 ## Quick runthrough
 
 1. Install Docker and Kubernetes.  
   See [Prerequisites](#prerequisites).
 2. Build this project to create Docker images.  
-  See [Building and running from TIBCO Streaming Studio&trade;](#building-and-running-from-tibco-streaming-studio-trade) and 
+  See [Building and running from TIBCO StreamBase® Studio](#building-and-running-from-tibco-streambase-reg-studio) and 
   [Building this sample from the command line and running the integration test cases](#building-this-sample-from-the-command-line-and-running-the-integration-test-cases)
 3. Use *kubectl apply* to grant permissions (if required )
 4. Use *kubectl apply* to start the Streaming Nodes in the Kubernetes cluster
@@ -104,8 +98,6 @@ configmap "resources" deleted
 statefulset.apps "ef-kubernetes-app" deleted
 ```
 
-<a name="prerequisites"></a>
-
 ## Prerequisites
 
 In addition to Docker (see [main Docker sample](../../../../../ef-2node/ef-2node-app/src/site/markdown/index.md) ), 
@@ -124,8 +116,6 @@ docker-for-desktop
 ```
 
 Docker for desktop only supports a single Kubernetes Node.
-
-<a name="cloud-native-development-lifecycle"></a>
 
 ## Cloud native development lifecycle
 
@@ -157,9 +147,7 @@ Maven lifecycle mapping is :
 
 The [TIBCO Streaming maven plugin](https://github.com/TIBCOSoftware/tibco-streaming-maven-plugin) provides the lifecycle.
 
-<a name="creating-an-application-archive-project-for-kubernetes-from-tibco-streaming-studio-trade"></a>
-
-## Creating an application archive project for Kubernetes from TIBCO Streaming Studio&trade;
+## Creating an application archive project for Kubernetes from TIBCO StreamBase&reg; Studio
 
 Create a new Streaming Project, select StreamBase Application and enable both Docker and Kubernetes :
 
@@ -174,11 +162,7 @@ The Kubernetes configurations include -
 * [security.conf](../../../src/main/configurations/security.conf) - Trusted hosts names need to match Kubernetes DNS names
 * [start-node](../../../src/main/docker/base/start-node) - Script to start the Streaming node
 
-<a name="kubernetes-permissions"></a>
-
 ## Kubernetes permissions
-
-<a name="cluster-monitor"></a>
 
 Most kubernetes deployments will require sufficient permissions for the application to manage discovery service objects, for example
 when running in the default namespace :
@@ -289,8 +273,6 @@ Along with additional files :
 * [Dockerfile](../../../src/main/docker/clustermonitor/Dockerfile)
 * [clustermonitor.yaml](../../../src/main/kubernetes/clustermonitor.yaml)
 
-<a name="containers-and-nodes"></a>
-
 ## Containers and nodes
 
 We use the Kubernetes *statefulset* controller to support good networking 
@@ -301,15 +283,11 @@ The goal of this sample is to construct the deployment shown below :
 
 ![resources](images/kubernetes-docker.svg)
 
-<a name="building-and-running-from-tibco-streaming-studio-trade"></a>
-
 1. One POD contains one Streaming node and liveness probe
 2. A StatefulSet controls the set of PODs that forms the application cluster
 3. Each streaming node creates a service object for [service discovery](#service-discovery)
 4. The Cluster Monitor is controlled by a second StatefuleSet and the lvweb console exposed via a NodePort
 5. The Kubernetes Dashboard is exposed via a proxy service
-
-<a name="service-discovery"></a>
 
 ## Service discovery
 
@@ -438,8 +416,6 @@ $ kubectl exec ef-kubernetes-app-0 -- curl -s -u tibco:tibco -X POST "http://efk
 
 Note that the POD must have sufficient kubernetes permissions to create, update and delete service objects.
 
-<a name="exposing-rest-endpoints-via-node-port"></a>
-
 ## Exposing REST endpoints via node port
 
 Webservices can be exposed by using *kubectl apply* to create a service object :
@@ -508,8 +484,6 @@ $ curl -s -u tibco:tibco -X POST "http://localhost:31448/admin/v1/targets/servic
 ...
 
 ```
-
-<a name="exposing-rest-endpoints-via-ingress"></a>
 
 ## Exposing REST endpoints via ingress
 
@@ -599,9 +573,7 @@ External clients can now access the webservice :
 
 Note that to avoid possible cross-origin (CORS) issue, the explore URL will need to be replaced with the ingress URL ( for example, replace *http://ef-kubernetes-app-0:8008/apidoc/healthcheck.json* with *http://localhost/apidoc/healthcheck.json* ).
 
-<a name="building-and-running-from-tibco-streaming-studio-trade"></a>
-
-## Building and running from TIBCO Streaming Studio&trade;
+## Building and running from TIBCO StreamBase&reg; Studio
 
 Useful plugins include :
 
@@ -610,8 +582,6 @@ Useful plugins include :
 * [Docker tooling](https://marketplace.eclipse.org/content/eclipse-docker-tooling), requires [TM Terminal](https://marketplace.eclipse.org/content/tm-terminal) - Docker explorer
 
 ![resources](images/studio.png)
-
-<a name="building-this-sample-from-the-command-line-and-running-the-integration-test-cases"></a>
 
 ## Building this sample from the command line and running the integration test cases
 
@@ -768,8 +738,6 @@ is being used or plain http ) then it may be possible to still use the registry 
 
 See also https://docs.docker.com/registry/insecure/.
 
-<a name="runtime-settings"></a>
-
 ## Runtime settings
 
 An application container image can be completely self-contained, but it is also possible to inject configuration and data files 
@@ -902,8 +870,6 @@ spec:
 
 A few Streaming configuration files reference files (for example trust store).  These can be included in 
 the docker image or via a ConfigMap in the same way as above.
-
-<a name="further-kubernetes-commands"></a>
 
 ## Further Kubernetes commands
 
@@ -1129,8 +1095,6 @@ $ kubectl exec rolling-app-0 epadmin create snapshot installpath=/var/opt/tibco/
 
 $ kubectl cp rolling-app-0:/var/opt/tibco/streambase/node/snapshots/rolling-app-0.default.rolling-app/. .
 ```
-
-<a name="alternative-kubernetes-implementations"></a>
 
 ## Alternative Kubernetes Implementations
 

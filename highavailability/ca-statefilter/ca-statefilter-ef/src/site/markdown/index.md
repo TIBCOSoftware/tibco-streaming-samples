@@ -4,11 +4,9 @@ This sample describes how to build an EventFlow fragment with a cluster-aware st
 
 * [Enable cluster aware settings in operator](#enable-cluster-aware-settings-in-operator)
 * [Design notes](#design-notes)
-* [Running this sample from TIBCO StreamBase&reg; Studio](#running-this-sample-from-tibco-streambase-studio-trade)
-* [Building this sample from TIBCO StreamBase&reg; Studio and running the unit test cases](#building-this-sample-from-tibco-streambase-studio-trade-and-running-the-unit-test-cases)
+* [Running this sample from TIBCO StreamBase® Studio](#running-this-sample-from-tibco-streambase-reg-studio)
+* [Building this sample from TIBCO StreamBase® Studio and running the unit test cases](#building-this-sample-from-tibco-streambase-reg-studio-and-running-the-unit-test-cases)
 * [Building this sample from the command line and running the unit test cases](#building-this-sample-from-the-command-line-and-running-the-unit-test-cases)
-
-<a name="enable-cluster-aware-settings-in-operator"></a>
 
 ## Enable cluster aware settings in operator
 
@@ -17,16 +15,12 @@ to be **cluster aware** - that is, the operator is started and stopped depending
 
 ![Clusteraware settings](images/studioclusterawaresettings.png)
 
-<a name="design-notes"></a>
-
 ## Design notes
 
 The cluster aware option **Active on a single node in the cluster** was selected, hence :
 
 * Only one node in the cluster will process the metronome tuples regardless of the number of nodes
 * Should the node processing the metronome tuples fail, another node in the cluster will start processing the tuples
-
-<a name="running-this-sample-from-tibco-streambase-studio-trade"></a>
 
 ## Running this sample from TIBCO StreamBase&reg; Studio
 
@@ -37,15 +31,11 @@ the application archive integration test cases.
 
 ![RunFromStudio](images/studio.gif)
 
-<a name="building-this-sample-from-tibco-streambase-studio-trade-and-running-the-unit-test-cases"></a>
-
 ## Building this sample from TIBCO StreamBase&reg; Studio and running the unit test cases
 
 Use the **Run As -> EventFlow Fragment Unit Test** menu option to build from TIBCO StreamBase&reg; Studio :
 
 ![RunFromStudio](images/studiounit.gif)
-
-<a name="building-this-sample-from-the-command-line-and-running-the-unit-test-cases"></a>
 
 ## Building this sample from the command line and running the unit test cases
 
