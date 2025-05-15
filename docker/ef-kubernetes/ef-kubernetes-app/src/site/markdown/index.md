@@ -9,14 +9,14 @@ node.
 * [Quick runthrough](#quick-runthrough)
 * [Prerequisites](#prerequisites)
 * [Clound native development lifecycle](#cloud-native-development-lifecycle)
-* [Creating an application archive project for Kubernetes from TIBCO StreamBase® Studio](#creating-an-application-archive-project-for-kubernetes-from-tibco-streambase-reg-studio)
+* [Creating an application archive project for Kubernetes from TIBCO StreamBase® Studio](#creating-an-application-archive-project-for-kubernetes-from-tibco-streambase-studio)
 * [Kubernetes permissions](#kubernetes-permissions)
 * [Cluster monitor](#cluster-monitor)
 * [Containers and nodes](#containers-and-nodes)
 * [Service discovery](#service-discovery)
 * [Exposing REST endpoints via node port](#exposing-rest-endpoints-via-node-port)
 * [Exposing REST endpoints via ingress](#exposing-rest-endpoints-via-ingress)
-* [Building and running from TIBCO StreamBase® Studio](#building-and-running-from-tibco-streambase-reg-studio)
+* [Building and running from TIBCO StreamBase® Studio](#building-and-running-from-tibco-streambase-studio)
 * [Building this sample from the command line and running the integration test cases](#building-this-sample-from-the-command-line-and-running-the-integration-test-cases)
 * [Deployment](#deployment)
 * [Runtime settings](#runtime-settings)
@@ -100,6 +100,10 @@ statefulset.apps "ef-kubernetes-app" deleted
 
 ## Prerequisites
 
+### Licensing
+A valid TIBCO Activation Service configuration is required before running any StreamBase EventFlow™ applications. The easiest way to do this for local development or testing is to create a license configuration file in the node user's home directory. The process for configuring the license activation is described in the **Welcome Guide > Activation in TIBCO Streaming and Model Management Server** page in the TIBCO Streaming documentation.
+
+### Kubernetes
 In addition to Docker (see [main Docker sample](../../../../../ef-2node/ef-2node-app/src/site/markdown/index.md) ), 
 Kubernetes is also required to be installed and configured.  In this sample we use **docker-for-desktop**, but
 see [Alternative Kubernetes Implementations](#alternative-kubernetes-implementations) for others.
@@ -147,7 +151,7 @@ Maven lifecycle mapping is :
 
 The [TIBCO Streaming maven plugin](https://github.com/TIBCOSoftware/tibco-streaming-maven-plugin) provides the lifecycle.
 
-## Creating an application archive project for Kubernetes from TIBCO StreamBase&reg; Studio
+## Creating an application archive project for Kubernetes from TIBCO StreamBase® Studio
 
 Create a new Streaming Project, select StreamBase Application and enable both Docker and Kubernetes :
 
@@ -573,7 +577,7 @@ External clients can now access the webservice :
 
 Note that to avoid possible cross-origin (CORS) issue, the explore URL will need to be replaced with the ingress URL ( for example, replace *http://ef-kubernetes-app-0:8008/apidoc/healthcheck.json* with *http://localhost/apidoc/healthcheck.json* ).
 
-## Building and running from TIBCO StreamBase&reg; Studio
+## Building and running from TIBCO StreamBase® Studio
 
 Useful plugins include :
 
