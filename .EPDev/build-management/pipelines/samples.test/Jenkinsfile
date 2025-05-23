@@ -22,7 +22,7 @@ String containerLabel = "(c.docker-compatible-linux-3.10 -> c.ansible-2.8-compat
 // See SB-53765 for context.
 def windowsNARLabel = "c.ms-toolset-v142"
 
-def activationServers = params.activationServerUris ?: jobUtil.getDefaultActivationServerUrls()
+def activationServers = params.activationServerUris ?: jobUtil.getDefaultActivationServiceUrls()
 
 String executorLabel = jobUtil.getStrBuildLabelEx(
     platform: platform, params: params,
