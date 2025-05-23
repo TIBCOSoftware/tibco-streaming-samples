@@ -47,7 +47,7 @@ pipeline {
         choice(name: 'deployArtifacts', choices: ['never', 'default', 'always'], // never first; just for testing
                description: 'The default is never to deploy because this is a test-only pipeline.')
 
-        string(name: 'mavenExtras', defaultValue: '-Dactivation.service.urls="https://na1prdstrep01.tibco.com:7070"',
+        string(name: 'mavenExtras', defaultValue: '-Dactivation.service.urls=\"https://na1prdstrep01.tibco.com:7070\"',
                description: 'Extra JVM options for Maven, usually -DskipTests and the like.')
 
         booleanParam(name: 'cleanWorkspace', defaultValue: true, description: 'Clean workspace before build.')
