@@ -55,8 +55,14 @@
     <properties>
         <dockerDomain>example.com</dockerDomain>
         <skipDockerTests>true</skipDockerTests>
-        <!-- FIX THIS: TOZHU: SB-51300 -->
+        <!-- FIX THIS: SB-51300 -->
         <skipTests>true</skipTests>
+
+        <!-- Define the following property with the quoted URL(s) of the TIBCO Activation Service -->
+        <!-- <activation.service.urls>"https://example1.com:7070","https://example2.com:7070"</activation.service.urls> -->
+
+        <!-- Uncomment to not require the activation.service.urls property -->
+        <!-- <skip.require.activation.service.urls>true</skip.require.activation.service.urls> -->
     </properties>
 
     <dependencies>
