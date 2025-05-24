@@ -24,6 +24,8 @@ def windowsNARLabel = "c.ms-toolset-v142"
 
 def activationServers = params.activationServerUris ?: jobUtil.getDefaultActivationServiceUrls()
 
+def quotedActivationServers = activationServers.split(",").collect{'"' + it + '"'}.join(",")
+
 String executorLabel = jobUtil.getStrBuildLabelEx(
     platform: platform, params: params,
     base: [ all: "c.unix-tools && a.x86_64",
@@ -135,7 +137,7 @@ pipeline {
                         skipJenkinsArtifactPublisher: [ any: true ],
                         archiveArtifacts: [ failure: // entrails
                                            [ artifacts: epDeclarative.getEPArchiveArtifactsForFailure() ] ],
-                        mavenExtras: "-Dactivation.service.urls=\"${activationServers}\""
+                        mavenExtras: "-Dactivation.service.urls=${quotedActivationServers}"
                     )
 
                     // Same as project version.
