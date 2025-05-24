@@ -24,7 +24,7 @@ def windowsNARLabel = "c.ms-toolset-v142"
 
 def activationServers = params.activationServerUris ?: jobUtil.getDefaultActivationServiceUrls()
 
-def quotedActivationServers = activationServers.split(",").collect{'"' + it + '"'}.join(",")
+def quotedActivationServers = activationServers.split(",").collect{'\\"' + it + '\\"'}.join(",")
 
 String executorLabel = jobUtil.getStrBuildLabelEx(
     platform: platform, params: params,
