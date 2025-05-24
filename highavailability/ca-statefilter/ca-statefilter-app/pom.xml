@@ -2,7 +2,7 @@
 <!--
   vim: set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab :
 
-  Copyright (c) 2018-2023 Cloud Software Group, Inc.
+  Copyright (c) 2018-2025 Cloud Software Group, Inc.
   
   Redistribution and use in source and binary forms, with or without
   modification, are permitted provided that the following conditions are met:
@@ -49,6 +49,14 @@
         <version>11.2.0-SNAPSHOT</version>
         <relativePath/>
     </parent>
+
+    <properties>
+        <!-- Define the following property with the quoted URL(s) of the TIBCO Activation Service -->
+        <!-- <activation.service.urls>"https://example1.com:7070","https://example2.com:7070"</activation.service.urls> -->
+
+        <!-- Uncomment to not require the activation.service.urls property -->
+        <!-- <skip.require.activation.service.urls>true</skip.require.activation.service.urls> -->
+    </properties>
 
     <dependencies>
         <dependency>

@@ -15,6 +15,37 @@ Helm 3 is also required to be installed and configured - see https://helm.sh/doc
 Note that the helm binary must be locatable via PATH - both from the command line and inside
 studio.  This may require setting PATH in studio ( see the Environment tab of the run configurations ).
 
+### License Activation Configuration
+
+A valid TIBCO Activation Service configuration is required before running any StreamBase applications.
+This sample contains a license configuration file in `src/main/configurations/license.conf`, which requires
+a Maven property `activation.service.urls` be defined with the quoted URL(s) of one or more TIBCO Activation
+Service instances. This property may be defined in the properties section of the `pom.xml` file:
+
+    <properties>
+        <!-- single activation server -->
+        <activation.service.urls>"https://example.com:7070"</activation.service.urls>
+
+        <!-- multiple activation servers -->
+        <activation.service.urls>"https://example1.com:7070","https://example2.com:7070"</activation.service.urls>
+    </properties>
+
+It may also be defined on the maven command line:
+
+    mvn install -Dactivation.service.urls=\"https://example.com:7070\"
+    mvn install -Dactivation.service.urls=\"https://example1.com:7070\",\"https://example2.com:7070\"
+
+Note that the quotes must be escaped on the command line.
+
+It is also possible to define a local license file under the user's home directory, containing the Activation
+Service URL(s). However, because a license configuration file in a Streambase application archive takes
+precedence over a local license file, the `src/main/configurations/license.conf` file must be deleted from
+the project in order for the local license file to be used. Note that the use of local license files is
+not recommended for production deployments, because it requires that each machine running Streaming
+Application(s) have a local license configuration for the user account under which the node runs.
+
+Refer to the **Welcome Guide > Activation in TIBCO Streaming and Model Management Server** page in the
+TIBCO Streaming documentation for more details on license activation.
 
 ## Quick runthrough
 
@@ -211,3 +242,30 @@ To learn more about the release, try:
 Note that in the above example the Helm variable dockerRegistry is set to the location of the
 docker images.
 
+---
+Copyright (c) 2018-2025 Cloud Software Group, Inc.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+* Redistributions of source code must retain the above copyright notice, this
+  list of conditions and the following disclaimer.
+
+* Redistributions in binary form must reproduce the above copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+
+* Neither the name of the copyright holder nor the names of its
+  contributors may be used to endorse or promote products derived from
+  this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.

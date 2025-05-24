@@ -8,7 +8,7 @@ node.
 * [Overview](#overview)
 * [Quick runthrough](#quick-runthrough)
 * [Prerequisites](#prerequisites)
-* [Clound native development lifecycle](#cloud-native-development-lifecycle)
+* [Cloud native development lifecycle](#cloud-native-development-lifecycle)
 * [Creating an application archive project for Kubernetes from TIBCO StreamBase® Studio](#creating-an-application-archive-project-for-kubernetes-from-tibco-streambase-studio)
 * [Kubernetes permissions](#kubernetes-permissions)
 * [Cluster monitor](#cluster-monitor)
@@ -100,8 +100,37 @@ statefulset.apps "ef-kubernetes-app" deleted
 
 ## Prerequisites
 
-### Licensing
-A valid TIBCO Activation Service configuration is required before running any StreamBase EventFlow™ applications. The easiest way to do this for local development or testing is to create a license configuration file in the node user's home directory. The process for configuring the license activation is described in the **Welcome Guide > Activation in TIBCO Streaming and Model Management Server** page in the TIBCO Streaming documentation.
+### License Activation Configuration
+
+A valid TIBCO Activation Service configuration is required before running any StreamBase applications.
+This sample contains a license configuration file in `src/main/configurations/license.conf`, which requires
+a Maven property `activation.service.urls` be defined with the quoted URL(s) of one or more TIBCO Activation
+Service instances. This property may be defined in the properties section of the `pom.xml` file:
+
+    <properties>
+        <!-- single activation server -->
+        <activation.service.urls>"https://example.com:7070"</activation.service.urls>
+
+        <!-- multiple activation servers -->
+        <activation.service.urls>"https://example1.com:7070","https://example2.com:7070"</activation.service.urls>
+    </properties>
+
+It may also be defined on the maven command line:
+
+    mvn install -Dactivation.service.urls=\"https://example.com:7070\"
+    mvn install -Dactivation.service.urls=\"https://example1.com:7070\",\"https://example2.com:7070\"
+
+Note that the quotes must be escaped on the command line.
+
+It is also possible to define a local license file under the user's home directory, containing the Activation
+Service URL(s). However, because a license configuration file in a Streambase application archive takes
+precedence over a local license file, the `src/main/configurations/license.conf` file must be deleted from
+the project in order for the local license file to be used. Note that the use of local license files is
+not recommended for production deployments, because it requires that each machine running Streaming
+Application(s) have a local license configuration for the user account under which the node runs.
+
+Refer to the **Welcome Guide > Activation in TIBCO Streaming and Model Management Server** page in the
+TIBCO Streaming documentation for more details on license activation.
 
 ### Kubernetes
 In addition to Docker (see [main Docker sample](../../../../../ef-2node/ef-2node-app/src/site/markdown/index.md) ), 
@@ -1306,3 +1335,31 @@ roleRef:
   name: service-update
 !
 ```
+
+---
+Copyright (c) 2018-2025 Cloud Software Group, Inc.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+* Redistributions of source code must retain the above copyright notice, this
+  list of conditions and the following disclaimer.
+
+* Redistributions in binary form must reproduce the above copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+
+* Neither the name of the copyright holder nor the names of its
+  contributors may be used to endorse or promote products derived from
+  this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.

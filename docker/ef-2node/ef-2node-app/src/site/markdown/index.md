@@ -24,6 +24,38 @@ CPUs and Memory settings on the Advanced tab of Docker preferences.
 
 ![resources](images/resources.png)
 
+### License Activation Configuration
+
+A valid TIBCO Activation Service configuration is required before running any StreamBase applications.
+This sample contains a license configuration file in `src/main/configurations/license.conf`, which requires
+a Maven property `activation.service.urls` be defined with the quoted URL(s) of one or more TIBCO Activation
+Service instances. This property may be defined in the properties section of the `pom.xml` file:
+
+    <properties>
+        <!-- single activation server -->
+        <activation.service.urls>"https://example.com:7070"</activation.service.urls>
+
+        <!-- multiple activation servers -->
+        <activation.service.urls>"https://example1.com:7070","https://example2.com:7070"</activation.service.urls>
+    </properties>
+
+It may also be defined on the maven command line:
+
+    mvn install -Dactivation.service.urls=\"https://example.com:7070\"
+    mvn install -Dactivation.service.urls=\"https://example1.com:7070\",\"https://example2.com:7070\"
+
+Note that the quotes must be escaped on the command line.
+
+It is also possible to define a local license file under the user's home directory, containing the Activation
+Service URL(s). However, because a license configuration file in a Streambase application archive takes
+precedence over a local license file, the `src/main/configurations/license.conf` file must be deleted from
+the project in order for the local license file to be used. Note that the use of local license files is
+not recommended for production deployments, because it requires that each machine running Streaming
+Application(s) have a local license configuration for the user account under which the node runs.
+
+Refer to the **Welcome Guide > Activation in TIBCO Streaming and Model Management Server** page in the
+TIBCO Streaming documentation for more details on license activation.
+
 ## Creating an application archive project for Docker from TIBCO StreamBase&reg; Studio
 
 TIBCO StreamBase&reg; Studio can generate a project containing the necessary files to build and 
@@ -313,7 +345,7 @@ maven plugin issues some rather odd warnings :
 These can be ignored.
 
 ---
-Copyright (c) 2018-2023 Cloud Software Group, Inc.
+Copyright (c) 2018-2025 Cloud Software Group, Inc.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
