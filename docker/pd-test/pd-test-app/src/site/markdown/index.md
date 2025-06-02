@@ -3,7 +3,7 @@
 Testing proxy discovery configurations can be difficult since often in test hardware, networks
 do not block the discovery messages.  This sample describes how to use docker to test proxy discovery.
 
-* [Creating an application archive project for Docker from TIBCO StreamBase® Studio](#creating-an-application-archive-project-for-docker-from-tibco-streambase-reg-studio)
+* [Creating an application archive project for Docker from TIBCO Streaming® Studio](#creating-an-application-archive-project-for-docker-from-tibco-streambase-reg-studio)
 * [Machines and nodes](#machines-and-nodes)
 * [Changes to the default configurations](#changes-to-the-default-configurations)
 * [Building this sample from the command line and running the integration test cases](#building-this-sample-from-the-command-line-and-running-the-integration-test-cases)
@@ -12,7 +12,7 @@ See also [Docker section in TIBCO® Streaming documentation](https://docs.tibco.
 
 ## License Activation Configuration
 
-A valid TIBCO Activation Service configuration is required before running any StreamBase applications.
+A valid TIBCO Activation Service configuration is required before running any Streaming applications.
 This sample contains a license configuration file in `src/main/configurations/license.conf`, which requires
 a Maven property `activation.service.urls` be defined with the quoted URL(s) of one or more TIBCO Activation
 Service instances. This property may be defined in the properties section of the `pom.xml` file:
@@ -33,7 +33,7 @@ It may also be defined on the maven command line:
 Note that the quotes must be escaped on the command line.
 
 It is also possible to define a local license file under the user's home directory, containing the Activation
-Service URL(s). However, because a license configuration file in a Streambase application archive takes
+Service URL(s). However, because a license configuration file in a Streaming application archive takes
 precedence over a local license file, the `src/main/configurations/license.conf` file must be deleted from
 the project in order for the local license file to be used. Note that the use of local license files is
 not recommended for production deployments, because it requires that each machine running Streaming
@@ -42,9 +42,9 @@ Application(s) have a local license configuration for the user account under whi
 Refer to the **Welcome Guide > Activation in TIBCO Streaming and Model Management Server** page in the
 TIBCO Streaming documentation for more details on license activation.
 
-## Creating an application archive project for Docker from TIBCO StreamBase&reg; Studio
+## Creating an application archive project for Docker from TIBCO Streaming&reg; Studio
 
-TIBCO StreamBase&reg; Studio can generate a project containing the necessary files to build and 
+TIBCO Streaming&reg; Studio can generate a project containing the necessary files to build and 
 test a Docker image by selecting **Enable Docker support** when creating an application archive project :
 
 ![create](images/create.png)
@@ -61,7 +61,7 @@ Such a project includes :
 
 ## Machines and nodes
 
-In this sample we name the docker machines as **A.example.com**,  which hosts the StreamBase node **A.pd-test-app**, and **B.example.com**, which hosts the StreamBase node **B.pd-test-app**.
+In this sample we name the docker machines as **A.example.com**,  which hosts the Streaming node **A.pd-test-app**, and **B.example.com**, which hosts the Streaming node **B.pd-test-app**.
 
 ![nodes](images/two-node-docker.svg)
 

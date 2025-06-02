@@ -3,11 +3,11 @@
 This sample describes how to deploy an application archive containing an EventFlow fragment to Docker managed by Ansible.
 
 * [Prerequisites](#prerequisites)
-* [Loading this sample in TIBCO StreamBase® Studio](#loading-this-sample-in-tibco-streambase-reg-studio)
+* [Loading this sample in TIBCO Streaming® Studio](#loading-this-sample-in-tibco-streambase-reg-studio)
 * [Ansible part of this project](#ansible-part-of-this-project)
 * [Containers and nodes](#containers-and-nodes)
 * [Changes to the default pom.xml file - profiles](#changes-to-the-default-pom-xml-file-profiles)
-* [Building and running from TIBCO StreamBase® Studio](#building-and-running-from-tibco-streambase-reg-studio)
+* [Building and running from TIBCO Streaming® Studio](#building-and-running-from-tibco-streambase-reg-studio)
 * [Example of Ansible task and maven plugin configuration](#example-of-ansible-task-and-maven-plugin-configuration)
 * [Building this sample from the command line and running the integration test cases](#building-this-sample-from-the-command-line-and-running-the-integration-test-cases)
 * [Additional Ansible playbooks](#additional-ansible-playbooks)
@@ -27,7 +27,7 @@ All Ansible playbooks are executed based on configuration file and inventory fil
 
 ### License Activation Configuration
 
-A valid TIBCO Activation Service configuration is required before running any StreamBase applications.
+A valid TIBCO Activation Service configuration is required before running any Streaming applications.
 This sample contains a license configuration file in `src/main/configurations/license.conf`, which requires
 a Maven property `activation.service.urls` be defined with the quoted URL(s) of one or more TIBCO Activation
 Service instances. This property may be defined in the properties section of the `pom.xml` file:
@@ -48,7 +48,7 @@ It may also be defined on the maven command line:
 Note that the quotes must be escaped on the command line.
 
 It is also possible to define a local license file under the user's home directory, containing the Activation
-Service URL(s). However, because a license configuration file in a Streambase application archive takes
+Service URL(s). However, because a license configuration file in a Streaming application archive takes
 precedence over a local license file, the `src/main/configurations/license.conf` file must be deleted from
 the project in order for the local license file to be used. Note that the use of local license files is
 not recommended for production deployments, because it requires that each machine running Streaming
@@ -57,9 +57,9 @@ Application(s) have a local license configuration for the user account under whi
 Refer to the **Welcome Guide > Activation in TIBCO Streaming and Model Management Server** page in the
 TIBCO Streaming documentation for more details on license activation.
 
-## Loading this sample in TIBCO StreamBase&reg; Studio
+## Loading this sample in TIBCO Streaming&reg; Studio
 
-To be able to run this sample in TIBCO StreamBase&reg; Studio please refer to [Using TIBCO Streambase Studio GitHub page](https://github.com/TIBCOSoftware/tibco-streaming-samples/blob/master/docs/studio.md).
+To be able to run this sample in TIBCO Streaming&reg; Studio please refer to [Using TIBCO Streaming Studio GitHub page](https://github.com/TIBCOSoftware/tibco-streaming-samples/blob/master/docs/studio.md).
 
 Below you can find a list of files this project is based on:
 
@@ -110,7 +110,7 @@ Check [playbook tasks](../../site/markdown/playbook-tasks.md) to see a selected 
 
 ## Containers and nodes
 
-In this sample we name the docker container as **A.ef-2node-ansible-app**,  which hosts the StreamBase node **A.ef-2node-ansible-app**, and **B.ef-2node-ansible-app**, which hosts the StreamBase node **B.ef-2node-ansible-app**.  A Docker network **example.com** connects the nodes together :
+In this sample we name the docker container as **A.ef-2node-ansible-app**,  which hosts the Streaming node **A.ef-2node-ansible-app**, and **B.ef-2node-ansible-app**, which hosts the Streaming node **B.ef-2node-ansible-app**.  A Docker network **example.com** connects the nodes together :
 
 ![nodes](images/two-node-docker.svg)
 
@@ -160,9 +160,9 @@ installed, hence the maven [pom.xml](../../../pom.xml) file is updated to detect
     </profiles>
 ```
 
-## Building and running from TIBCO StreamBase&reg; Studio
+## Building and running from TIBCO Streaming&reg; Studio
 
-Use the **Run As -> Maven install** menu option to build from TIBCO StreamBase&reg; Studio or Run As shortcut.  Tests can
+Use the **Run As -> Maven install** menu option to build from TIBCO Streaming&reg; Studio or Run As shortcut.  Tests can
 be skipped if required by ticking the **Skip tests**. It is important to add **PATH** variable under Environment tab with value: **/bin:/usr/bin:/usr/local/bin:/usr/sbin**. 
 
 ![maven](images/studio-conf-ansible.jpg)

@@ -54,7 +54,7 @@ This sample's structure is shown below :
 
 ## License Activation Configuration
 
-A valid TIBCO Activation Service configuration is required before running any StreamBase applications.
+A valid TIBCO Activation Service configuration is required before running any Streaming applications.
 This sample contains a license configuration file in `src/main/configurations/license.conf`, which requires
 a Maven property `activation.service.urls` be defined with the quoted URL(s) of one or more TIBCO Activation
 Service instances. This property may be defined in the properties section of the `pom.xml` file:
@@ -75,7 +75,7 @@ It may also be defined on the maven command line:
 Note that the quotes must be escaped on the command line.
 
 It is also possible to define a local license file under the user's home directory, containing the Activation
-Service URL(s). However, because a license configuration file in a Streambase application archive takes
+Service URL(s). However, because a license configuration file in a Streaming application archive takes
 precedence over a local license file, the `src/main/configurations/license.conf` file must be deleted from
 the project in order for the local license file to be used. Note that the use of local license files is
 not recommended for production deployments, because it requires that each machine running Streaming

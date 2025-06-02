@@ -13,7 +13,7 @@ This sample describes how to deploy an EventFlow fragment in a 3-node active act
 
 ## License Activation Configuration
 
-A valid TIBCO Activation Service configuration is required before running any StreamBase applications.
+A valid TIBCO Activation Service configuration is required before running any Streaming applications.
 This sample contains a license configuration file in `src/main/configurations/license.conf`, which requires
 a Maven property `activation.service.urls` be defined with the quoted URL(s) of one or more TIBCO Activation
 Service instances. This property may be defined in the properties section of the `pom.xml` file:
@@ -34,7 +34,7 @@ It may also be defined on the maven command line:
 Note that the quotes must be escaped on the command line.
 
 It is also possible to define a local license file under the user's home directory, containing the Activation
-Service URL(s). However, because a license configuration file in a Streambase application archive takes
+Service URL(s). However, because a license configuration file in a Streaming application archive takes
 precedence over a local license file, the `src/main/configurations/license.conf` file must be deleted from
 the project in order for the local license file to be used. Note that the use of local license files is
 not recommended for production deployments, because it requires that each machine running Streaming
@@ -45,9 +45,9 @@ TIBCO Streaming documentation for more details on license activation.
 
 ## Machines and nodes
 
-In this sample we name the machines as **A**,  which hosts the StreamBase node **A**, 
-**B**, which hosts the StreamBase node **B** and **C** which hosts StreamBase node **C**.
-We also have disaster recovery machine **D** which hosts the StreamBase node **D** - this
+In this sample we name the machines as **A**,  which hosts the Streaming node **A**, 
+**B**, which hosts the Streaming node **B** and **C** which hosts Streaming node **C**.
+We also have disaster recovery machine **D** which hosts the Streaming node **D** - this
 can be situated offsite and connected to the main machines via a wide area network :
 
 ![nodes](images/three-node-active-active-dr-nodes.svg)

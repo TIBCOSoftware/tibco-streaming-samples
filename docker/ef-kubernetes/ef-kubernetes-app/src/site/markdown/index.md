@@ -9,14 +9,14 @@ node.
 * [Quick runthrough](#quick-runthrough)
 * [Prerequisites](#prerequisites)
 * [Cloud native development lifecycle](#cloud-native-development-lifecycle)
-* [Creating an application archive project for Kubernetes from TIBCO StreamBase® Studio](#creating-an-application-archive-project-for-kubernetes-from-tibco-streambase-studio)
+* [Creating an application archive project for Kubernetes from TIBCO Streaming® Studio](#creating-an-application-archive-project-for-kubernetes-from-tibco-streambase-studio)
 * [Kubernetes permissions](#kubernetes-permissions)
 * [Cluster monitor](#cluster-monitor)
 * [Containers and nodes](#containers-and-nodes)
 * [Service discovery](#service-discovery)
 * [Exposing REST endpoints via node port](#exposing-rest-endpoints-via-node-port)
 * [Exposing REST endpoints via ingress](#exposing-rest-endpoints-via-ingress)
-* [Building and running from TIBCO StreamBase® Studio](#building-and-running-from-tibco-streambase-studio)
+* [Building and running from TIBCO Streaming® Studio](#building-and-running-from-tibco-streambase-studio)
 * [Building this sample from the command line and running the integration test cases](#building-this-sample-from-the-command-line-and-running-the-integration-test-cases)
 * [Deployment](#deployment)
 * [Runtime settings](#runtime-settings)
@@ -55,7 +55,7 @@ in a Kubernetes environment.  The sample shows how to build, deploy and use TIBC
 1. Install Docker and Kubernetes.  
   See [Prerequisites](#prerequisites).
 2. Build this project to create Docker images.  
-  See [Building and running from TIBCO StreamBase® Studio](#building-and-running-from-tibco-streambase-reg-studio) and 
+  See [Building and running from TIBCO Streaming® Studio](#building-and-running-from-tibco-streambase-reg-studio) and 
   [Building this sample from the command line and running the integration test cases](#building-this-sample-from-the-command-line-and-running-the-integration-test-cases)
 3. Use *kubectl apply* to grant permissions (if required )
 4. Use *kubectl apply* to start the Streaming Nodes in the Kubernetes cluster
@@ -102,7 +102,7 @@ statefulset.apps "ef-kubernetes-app" deleted
 
 ### License Activation Configuration
 
-A valid TIBCO Activation Service configuration is required before running any StreamBase applications.
+A valid TIBCO Activation Service configuration is required before running any Streaming applications.
 This sample contains a license configuration file in `src/main/configurations/license.conf`, which requires
 a Maven property `activation.service.urls` be defined with the quoted URL(s) of one or more TIBCO Activation
 Service instances. This property may be defined in the properties section of the `pom.xml` file:
@@ -123,7 +123,7 @@ It may also be defined on the maven command line:
 Note that the quotes must be escaped on the command line.
 
 It is also possible to define a local license file under the user's home directory, containing the Activation
-Service URL(s). However, because a license configuration file in a Streambase application archive takes
+Service URL(s). However, because a license configuration file in a Streaming application archive takes
 precedence over a local license file, the `src/main/configurations/license.conf` file must be deleted from
 the project in order for the local license file to be used. Note that the use of local license files is
 not recommended for production deployments, because it requires that each machine running Streaming
@@ -180,9 +180,9 @@ Maven lifecycle mapping is :
 
 The [TIBCO Streaming maven plugin](https://github.com/TIBCOSoftware/tibco-streaming-maven-plugin) provides the lifecycle.
 
-## Creating an application archive project for Kubernetes from TIBCO StreamBase® Studio
+## Creating an application archive project for Kubernetes from TIBCO Streaming® Studio
 
-Create a new Streaming Project, select StreamBase Application and enable both Docker and Kubernetes :
+Create a new Streaming Project, select Streaming Application and enable both Docker and Kubernetes :
 
 ![resources](images/studio-new-project.png)
 
@@ -606,7 +606,7 @@ External clients can now access the webservice :
 
 Note that to avoid possible cross-origin (CORS) issue, the explore URL will need to be replaced with the ingress URL ( for example, replace *http://ef-kubernetes-app-0:8008/apidoc/healthcheck.json* with *http://localhost/apidoc/healthcheck.json* ).
 
-## Building and running from TIBCO StreamBase® Studio
+## Building and running from TIBCO Streaming® Studio
 
 Useful plugins include :
 
