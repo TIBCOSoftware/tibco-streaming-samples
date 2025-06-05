@@ -38,7 +38,7 @@
     <groupId>com.tibco.ep.samples.web</groupId>
     <artifactId>openapi-server-ef</artifactId>
     <packaging>ep-eventflow-fragment</packaging>
-    <version>11.2.0-SNAPSHOT</version>
+    <version>11.3.0-SNAPSHOT</version>
     <name>Web: OpenAPI Server EventFlow</name>
     <description>How to use an OpenAPI generated WAR in an EventFlow project</description>
 
@@ -50,7 +50,7 @@
     <parent>
         <groupId>com.tibco.ep.sb.parent</groupId>
         <artifactId>ep-eventflow-fragment-samples</artifactId>
-        <version>11.2.0-SNAPSHOT</version>
+        <version>11.3.0-SNAPSHOT</version>
         <relativePath/>
     </parent>
 

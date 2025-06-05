@@ -34,7 +34,7 @@
 
     <groupId>com.tibco.modelops</groupId>
     <artifactId>google-language</artifactId>
-    <version>11.2.0-SNAPSHOT</version>
+    <version>11.3.0-SNAPSHOT</version>
     <name>TIBCO ModelOps MLaaS Google Language Sentiment Sample</name>
     <packaging>pom</packaging>
  

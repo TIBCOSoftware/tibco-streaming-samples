@@ -38,7 +38,7 @@
     <groupId>com.tibco.ep.samples.web</groupId>
     <artifactId>springboot-eventflow</artifactId>
     <packaging>ep-eventflow-fragment</packaging>
-    <version>11.2.0-SNAPSHOT</version>
+    <version>11.3.0-SNAPSHOT</version>
     <name>Web: Spring Boot EventFlow</name>
     <description>How to use a WAR created by Spring Boot in an EventFlow fragment.</description>
 
@@ -46,7 +46,7 @@
     <parent>
         <groupId>com.tibco.ep.sb.parent</groupId>
         <artifactId>ep-eventflow-fragment-samples</artifactId> <!-- replace with ep-eventflow-fragment to avoid sample metadata -->
-        <version>11.2.0-SNAPSHOT</version>
+        <version>11.3.0-SNAPSHOT</version>
         <relativePath/>
     </parent>
 

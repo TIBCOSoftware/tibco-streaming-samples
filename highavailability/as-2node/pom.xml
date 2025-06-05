@@ -37,7 +37,7 @@
     <groupId>com.tibco.ep.samples.highavailability</groupId>
     <artifactId>as-2node</artifactId>
     <packaging>pom</packaging>
-    <version>11.2.0-SNAPSHOT</version>
+    <version>11.3.0-SNAPSHOT</version>
     <name>HA: 2-node active standby</name>
     <description>How to build a 2-node active standby deployment with static data distribution policy.</description>
 

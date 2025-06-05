@@ -38,7 +38,7 @@
     <groupId>com.tibco.ep.samples.web</groupId>
     <artifactId>springboot-war</artifactId>
     <packaging>war</packaging>
-    <version>11.2.0-SNAPSHOT</version>
+    <version>11.3.0-SNAPSHOT</version>
     <name>Web: Spring Boot WAR</name>
     <description>How to use Spring Boot to create a WAR</description>
 
@@ -46,7 +46,7 @@
     <parent>
         <groupId>com.tibco.ep.sb.parent</groupId>
         <artifactId>common</artifactId>
-        <version>11.2.0-SNAPSHOT</version>
+        <version>11.3.0-SNAPSHOT</version>
         <relativePath/>
     </parent>
 

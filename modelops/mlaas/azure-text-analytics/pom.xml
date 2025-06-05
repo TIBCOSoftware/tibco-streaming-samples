@@ -34,7 +34,7 @@
 
     <groupId>com.tibco.modelops</groupId>
     <artifactId>azure-text-analytics</artifactId>
-    <version>11.2.0-SNAPSHOT</version>
+    <version>11.3.0-SNAPSHOT</version>
     <name>TIBCO ModelOps MLaaS Azure Sentiment Sample</name>
     <packaging>pom</packaging>
  

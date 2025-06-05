@@ -38,7 +38,7 @@
     <groupId>com.tibco.ep.samples.highavailability</groupId>
     <artifactId>ca-statefilter-app</artifactId>
     <packaging>ep-application</packaging>
-    <version>11.2.0-SNAPSHOT</version>
+    <version>11.3.0-SNAPSHOT</version>
     <name>HA: cluster aware state filter - Application</name>
     <description>How to build cluster aware TIBCO Streaming projects - Application</description>
 
@@ -46,7 +46,7 @@
     <parent>
         <groupId>com.tibco.ep.sb.parent</groupId>
         <artifactId>ep-application-samples</artifactId> <!-- replace with ep-application to avoid sample metadata -->
-        <version>11.2.0-SNAPSHOT</version>
+        <version>11.3.0-SNAPSHOT</version>
         <relativePath/>
     </parent>
 

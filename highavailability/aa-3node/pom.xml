@@ -37,7 +37,7 @@
     <groupId>com.tibco.ep.samples.highavailability</groupId>
     <artifactId>aa-3node</artifactId>
     <packaging>pom</packaging>
-    <version>11.2.0-SNAPSHOT</version>
+    <version>11.3.0-SNAPSHOT</version>
     <name>HA: 3-node active active</name>
     <description>How to build a 3-node active active deployment with dynamic data distribution policy.</description>
 

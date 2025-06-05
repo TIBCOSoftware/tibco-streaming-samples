@@ -1,6 +1,6 @@
 # Structure: Samples
 
-How to structure TIBCO&reg; Streaming 11.2.0-SNAPSHOT projects.
+How to structure TIBCO&reg; Streaming 11.3.0-SNAPSHOT projects.
 
 Samples :
 
