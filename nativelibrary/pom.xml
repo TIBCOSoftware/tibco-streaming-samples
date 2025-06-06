@@ -37,7 +37,7 @@
     <groupId>com.tibco.ep.samples</groupId>
     <artifactId>nativelibrary</artifactId>
     <packaging>pom</packaging>
-    <version>11.2.0-SNAPSHOT</version>
+    <version>11.2.0</version>
     <name>Native: Samples</name>
     <description>How to use native libraries in TIBCO Streaming projects.</description>
 

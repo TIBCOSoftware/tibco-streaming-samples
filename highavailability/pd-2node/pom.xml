@@ -37,7 +37,7 @@
     <groupId>com.tibco.ep.samples.highavailability</groupId>
     <artifactId>pd-2node</artifactId>
     <packaging>pom</packaging>
-    <version>11.2.0-SNAPSHOT</version>
+    <version>11.2.0</version>
     <name>HA: proxy discovery</name>
     <description>How to build a 2-node active active deployment with dynamic data distribution policy and proxy discovery.</description>
 

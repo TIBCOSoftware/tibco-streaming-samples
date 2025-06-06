@@ -38,7 +38,7 @@
     <groupId>com.tibco.ep.samples.web</groupId>
     <artifactId>websocket-war</artifactId>
     <packaging>war</packaging>
-    <version>11.2.0-SNAPSHOT</version>
+    <version>11.2.0</version>
     <name>Web: WebSocket WAR</name>
     <description>How to create a WAR which has a WebSocket endpoint</description>
 
@@ -51,7 +51,7 @@
     <parent>
         <groupId>com.tibco.ep.sb.parent</groupId>
         <artifactId>common</artifactId>
-        <version>11.2.0-SNAPSHOT</version>
+        <version>11.2.0</version>
         <relativePath/>
     </parent>
 

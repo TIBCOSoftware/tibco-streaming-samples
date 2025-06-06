@@ -37,7 +37,7 @@
     <groupId>com.tibco.ep.samples.structure</groupId>
     <artifactId>java</artifactId>
     <packaging>ep-java-fragment</packaging>
-    <version>11.2.0-SNAPSHOT</version>
+    <version>11.2.0</version>
     <name>Structure: Java</name>
     <description>How to structure an Java fragment.</description>
 
@@ -49,7 +49,7 @@
     <parent>
         <groupId>com.tibco.ep.sb.parent</groupId>
         <artifactId>ep-java-fragment-samples</artifactId> <!-- replace with ep-java-fragment to avoid sample metadata --> 
-        <version>11.2.0-SNAPSHOT</version>
+        <version>11.2.0</version>
         <relativePath/>
     </parent>
 

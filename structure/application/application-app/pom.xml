@@ -37,7 +37,7 @@
     <groupId>com.tibco.ep.samples.structure</groupId>
     <artifactId>application-app</artifactId>
     <packaging>ep-application</packaging>
-    <version>11.2.0-SNAPSHOT</version>
+    <version>11.2.0</version>
     <name>Structure: Application - Application</name>
     <description>How to structure a maven aggregate project with EventFlow fragment and application archive - Application</description>
 
@@ -45,7 +45,7 @@
     <parent>
         <groupId>com.tibco.ep.sb.parent</groupId>
         <artifactId>ep-application-samples</artifactId> <!-- replace with ep-application to avoid sample metadata -->
-        <version>11.2.0-SNAPSHOT</version>
+        <version>11.2.0</version>
         <relativePath/>
     </parent>
 

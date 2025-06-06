@@ -37,7 +37,7 @@
     <groupId>com.tibco.ep.samples.structure</groupId>
     <artifactId>liveview</artifactId>
     <packaging>ep-liveview-fragment</packaging>
-    <version>11.2.0-SNAPSHOT</version>
+    <version>11.2.0</version>
     <name>Structure: LiveView</name>
     <description>How to structure an LiveView fragment.</description>
 
@@ -49,7 +49,7 @@
     <parent>
         <groupId>com.tibco.ep.sb.parent</groupId>
         <artifactId>ep-liveview-fragment-samples</artifactId> <!-- replace with ep-liveview-fragment to avoid sample metadata -->
-        <version>11.2.0-SNAPSHOT</version>
+        <version>11.2.0</version>
         <relativePath/>
     </parent>
 

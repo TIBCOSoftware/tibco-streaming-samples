@@ -49,7 +49,7 @@
     <parent>
         <groupId>com.tibco.ep.sb.parent</groupId>
         <artifactId>ep-eventflow-fragment-samples</artifactId>
-        <version>11.2.0-SNAPSHOT</version>
+        <version>11.2.0</version>
         <relativePath/>
     </parent>
 

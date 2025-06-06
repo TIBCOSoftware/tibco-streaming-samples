@@ -34,7 +34,7 @@
 
     <groupId>com.tibco.modelops</groupId>
     <artifactId>amazon-comprehend</artifactId>
-    <version>11.2.0-SNAPSHOT</version>
+    <version>11.2.0</version>
     <name>TIBCO ModelOps MLaaS Amazon Comprehend Sentiment Sample</name>
     <packaging>pom</packaging>
  

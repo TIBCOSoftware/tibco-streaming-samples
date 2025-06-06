@@ -37,7 +37,7 @@
     <groupId>com.tibco.ep.samples.nativelibrary</groupId>
     <artifactId>nar</artifactId>
     <packaging>pom</packaging>
-    <version>11.2.0-SNAPSHOT</version>
+    <version>11.2.0</version>
     <name>Native: NAR</name>
     <description>How to build and use native libraries with NAR.</description>
 

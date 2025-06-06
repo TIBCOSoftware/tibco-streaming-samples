@@ -37,7 +37,7 @@
     <groupId>com.tibco.ep.samples.docker</groupId>
     <artifactId>lv-1node</artifactId>
     <packaging>pom</packaging>
-    <version>11.2.0-SNAPSHOT</version>
+    <version>11.2.0</version>
     <name>Docker: LiveView</name>
     <description>How to deploy a LiveView application in Docker</description>
 

@@ -1,6 +1,6 @@
 # Web: Samples
 
-How to deploy web application in TIBCO&reg; Streaming 11.2.0-SNAPSHOT projects.
+How to deploy web application in TIBCO&reg; Streaming 11.2.0 projects.
 
 Samples :
 

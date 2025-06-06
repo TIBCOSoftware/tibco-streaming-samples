@@ -37,7 +37,7 @@
     <groupId>com.tibco.ep.samples.nativelibrary</groupId>
     <artifactId>nar-eventflow</artifactId>
     <packaging>ep-eventflow-fragment</packaging>
-    <version>11.2.0-SNAPSHOT</version>
+    <version>11.2.0</version>
     <name>Native: NAR - EventFlow calling C++</name>
     <description>How to use a NAR dependency in an EventFlow fragment.</description>
 
@@ -45,7 +45,7 @@
     <parent>
         <groupId>com.tibco.ep.sb.parent</groupId>
         <artifactId>ep-eventflow-fragment-samples</artifactId> <!-- replace with ep-eventflow-fragment to avoid sample metadata -->
-        <version>11.2.0-SNAPSHOT</version>
+        <version>11.2.0</version>
         <relativePath/>
     </parent>
 

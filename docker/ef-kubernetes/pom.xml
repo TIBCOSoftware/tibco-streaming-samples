@@ -37,7 +37,7 @@
     <groupId>com.tibco.ep.samples.docker</groupId>
     <artifactId>ef-kubernetes</artifactId>
     <packaging>pom</packaging>
-    <version>11.2.0-SNAPSHOT</version>
+    <version>11.2.0</version>
     <name>Docker: Kubernetes EventFlow</name>
     <description>How to deploy an EventFlow application in Docker with Kubernetes</description>
 

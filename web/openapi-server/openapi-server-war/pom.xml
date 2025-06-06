@@ -35,7 +35,7 @@
     <groupId>com.tibco.ep.samples.web</groupId>
     <artifactId>openapi-server-war</artifactId>
     <packaging>war</packaging>
-    <version>11.2.0-SNAPSHOT</version>
+    <version>11.2.0</version>
     <name>Web: OpenAPI Server WAR</name>
     <description>How to create a WAR from OpenAPI specification documentation with OpenAPI Code Generation tool</description>
 
@@ -43,7 +43,7 @@
     <parent>
         <groupId>com.tibco.ep.sb.parent</groupId>
         <artifactId>common</artifactId>
-        <version>11.2.0-SNAPSHOT</version>
+        <version>11.2.0</version>
         <relativePath/>
     </parent>
 

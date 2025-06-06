@@ -37,7 +37,7 @@
     <groupId>com.tibco.ep.samples.nativelibrary</groupId>
     <artifactId>nar-cpplib</artifactId>
     <packaging>nar</packaging>
-    <version>11.2.0-SNAPSHOT</version>
+    <version>11.2.0</version>
     <name>Native: NAR - C++ Library</name>
     <description>How to compile C++ source to a NAR.</description>
 
@@ -62,7 +62,7 @@
     <parent>
         <groupId>com.tibco.ep.sb.parent</groupId>
         <artifactId>common</artifactId>
-        <version>11.2.0-SNAPSHOT</version>
+        <version>11.2.0</version>
         <relativePath/>
     </parent>
 
