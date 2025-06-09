@@ -1,6 +1,6 @@
 # Java: Samples
 
-How to invoke Java from TIBCO&reg; Streaming 11.2.0-SNAPSHOT projects.
+How to invoke Java from TIBCO&reg; Streaming 11.2.1-SNAPSHOT projects.
 
 Samples :
 

@@ -1,6 +1,6 @@
 # HA: Samples
 
-How to build Highly Available TIBCO&reg; Streaming 11.2.0-SNAPSHOT projects.
+How to build Highly Available TIBCO&reg; Streaming 11.2.1-SNAPSHOT projects.
 
 Samples :
 

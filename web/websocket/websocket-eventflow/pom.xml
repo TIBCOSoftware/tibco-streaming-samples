@@ -38,7 +38,7 @@
     <groupId>com.tibco.ep.samples.web</groupId>
     <artifactId>websocket-eventflow</artifactId>
     <packaging>ep-eventflow-fragment</packaging>
-    <version>11.2.0-SNAPSHOT</version>
+    <version>11.2.1-SNAPSHOT</version>
     <name>Web: WebSocket EventFlow</name>
     <description>How to use a WebSocket WAR in an EventFlow project.</description>
 
@@ -48,7 +48,7 @@
         <!-- Sample specific parent that includes sample licence metadata. -->
         <!-- To avoid sample metadata, replace with ep-eventflow-fragment. -->
         <artifactId>ep-eventflow-fragment-samples</artifactId>
-        <version>11.2.0-SNAPSHOT</version>
+        <version>11.2.1-SNAPSHOT</version>
         <relativePath/>
     </parent>
 

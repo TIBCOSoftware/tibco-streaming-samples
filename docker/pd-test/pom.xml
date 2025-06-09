@@ -37,7 +37,7 @@
     <groupId>com.tibco.ep.samples.docker</groupId>
     <artifactId>pd-test</artifactId>
     <packaging>pom</packaging>
-    <version>11.2.0-SNAPSHOT</version>
+    <version>11.2.1-SNAPSHOT</version>
     <name>Docker: proxy discovery test</name>
     <description>How to user Docker to test proxy discovery</description>
 

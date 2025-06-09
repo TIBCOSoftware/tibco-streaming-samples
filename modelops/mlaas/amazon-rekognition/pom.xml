@@ -34,7 +34,7 @@
 
     <groupId>com.tibco.modelops</groupId>
     <artifactId>amazon-rekognition</artifactId>
-    <version>11.2.0-SNAPSHOT</version>
+    <version>11.2.1-SNAPSHOT</version>
     <name>TIBCO ModelOps MLaaS Azure Image Labeling Sample</name>
     <packaging>pom</packaging>
  

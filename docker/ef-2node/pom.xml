@@ -37,7 +37,7 @@
     <groupId>com.tibco.ep.samples.docker</groupId>
     <artifactId>ef-2node</artifactId>
     <packaging>pom</packaging>
-    <version>11.2.0-SNAPSHOT</version>
+    <version>11.2.1-SNAPSHOT</version>
     <name>Docker: 2-node EventFlow</name>
     <description>How to deploy a 2-node EventFlow application in Docker</description>
 

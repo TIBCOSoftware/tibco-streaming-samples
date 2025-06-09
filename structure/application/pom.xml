@@ -37,7 +37,7 @@
     <groupId>com.tibco.ep.samples.structure</groupId>
     <artifactId>application</artifactId>
     <packaging>pom</packaging>
-    <version>11.2.0-SNAPSHOT</version>
+    <version>11.2.1-SNAPSHOT</version>
     <name>Structure: Application</name>
     <description>How to structure a maven aggregate project with EventFlow fragment and application archive.</description>
 

@@ -37,7 +37,7 @@
     <groupId>com.tibco.ep.samples.web</groupId>
     <artifactId>prometheus-metrics</artifactId>
     <packaging>pom</packaging>
-    <version>11.2.0-SNAPSHOT</version>
+    <version>11.2.1-SNAPSHOT</version>
     <name>Web: Prometheus Metrics Integration</name>
     <description>How to integrate with Prometheus Metrics in TIBCO Streaming.</description>
 

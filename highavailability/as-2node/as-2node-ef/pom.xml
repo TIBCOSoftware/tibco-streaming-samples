@@ -37,7 +37,7 @@
     <groupId>com.tibco.ep.samples.highavailability</groupId>
     <artifactId>as-2node-ef</artifactId>
     <packaging>ep-eventflow-fragment</packaging>
-    <version>11.2.0-SNAPSHOT</version>
+    <version>11.2.1-SNAPSHOT</version>
     <name>HA: 2-node active standby - EventFlow Fragment</name>
     <description>How to build a 2-node active standby deployment. - EventFlow Fragment</description>
 
@@ -45,7 +45,7 @@
     <parent>
         <groupId>com.tibco.ep.sb.parent</groupId>
         <artifactId>ep-eventflow-fragment-samples</artifactId> <!-- replace with ep-eventflow-fragment to avoid sample metadata -->
-        <version>11.2.0-SNAPSHOT</version>
+        <version>11.2.1-SNAPSHOT</version>
         <relativePath/>
     </parent>
 

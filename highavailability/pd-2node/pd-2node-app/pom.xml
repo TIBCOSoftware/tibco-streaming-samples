@@ -37,7 +37,7 @@
     <groupId>com.tibco.ep.samples.highavailability</groupId>
     <artifactId>pd-2node-app</artifactId>
     <packaging>ep-application</packaging>
-    <version>11.2.0-SNAPSHOT</version>
+    <version>11.2.1-SNAPSHOT</version>
     <name>HA: proxy discovery - Application</name>
     <description>How to build a 2-node active active deployment + proxy discovery. - Application</description>
 
@@ -45,7 +45,7 @@
     <parent>
         <groupId>com.tibco.ep.sb.parent</groupId>
         <artifactId>ep-application-samples</artifactId> <!-- replace with ep-application to avoid sample metadata -->
-        <version>11.2.0-SNAPSHOT</version>
+        <version>11.2.1-SNAPSHOT</version>
         <relativePath/>
     </parent>
 

@@ -37,7 +37,7 @@
     <groupId>com.tibco.ep.samples</groupId>
     <artifactId>java</artifactId>
     <packaging>pom</packaging>
-    <version>11.2.0-SNAPSHOT</version>
+    <version>11.2.1-SNAPSHOT</version>
     <name>Java: Samples</name>
     <description>How to invoke Java from TIBCO Streaming projects.</description>
 

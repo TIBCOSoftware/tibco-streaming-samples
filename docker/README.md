@@ -1,6 +1,6 @@
 # Docker: Samples
 
-How to use Docker in TIBCO&reg; Streaming 11.2.0-SNAPSHOT projects.
+How to use Docker in TIBCO&reg; Streaming 11.2.1-SNAPSHOT projects.
 
 Samples :
 
