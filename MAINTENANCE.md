@@ -31,41 +31,22 @@ Ansible that is using Python 3.8:
 
     python3.8 -m pip install --user docker
 
-You need a Maven settings file that has access to the EP release or
-release candidate repositories, because the Maven
-[`versions:update-parent`](https://www.mojohaus.org/versions-maven-plugin/update-parent-mojo.html)
-mojo consults _remote_ repositories, **not** the local repository. It does not
-matter if the next version of the Streaming release artifacts are in your
-local Maven repository; they are ignored when looking for new parent versions.
-
-Alternatively, you can ensure that you have installed the Maven
+You can ensure that you have installed the Maven
 artifacts using the `epdev install maven` command of each product
 installation involved in the transition in the Maven local repository
 as configured by your defaults `.m2/settings.xml`, if it exists. And
 if not, the `epdev` commands will just install into `.m2/repository`
 as expected.
 
-These Streaming versions are relevant:
-
-* the version used in current branch
-* the version to be used in the new branch
-
-No special Maven settings file should be needed when running the update
-commands documented here.
+As of Streaming 11.2, the version change process is part of the Streaming
+release process because the Maven versions of the samples align with
+the Streaming version.
 
 ## Basics ##
 
-Each TIBCO Streaming release eventually gets a branch named for the
+Each Streaming release eventually gets a branch named for the
 version. The latest release version becomes the default branch
 for this repository. 
-
-For new releases, the sample project versions don't change; instead,
-the versions of the sample-specific parent POMs (which run parallel to
-the ordinary parent POMs used by Streaming projects) are changed.
-
-When transitioning to release versions, internal TIBCO developers need
-to use special Maven settings that allow access to release canididate
-artifact repositories; see below.
 
 ## Enabling Specialized Projects ##
 
@@ -97,28 +78,9 @@ something like:
     
 which you could just use as a prefix to running the maintenance commands.
 
-## Problems?
-
-If something goes wrong, you can add a first parameter of `--debug` to
-turn on debugging. Every shell command will be echoed.
-
-Requiring that sample projects to be consistent for maintenance
-purposes is a tall order, especialy for the suite of cloud and machine
-tools that these samples illustrate. When you find issues that cannot
-be solved in code, update this file with your findings.
-
-## Updating Streaming Parent Versions ##
-
-Run this command:
-
-    [ MVN_OPTIONS=...more mvn parameters... ] ./EPDev/update-streaming-parent-versions **new-version**
-
-Transitions to the next snapshot version will need
-`-DallowSnapshots=true` in the `MVN_OPTIONS` as well.
-
-Commiting this result as a checkpoint is recommended.
-
 ## Regenerating Sample Indices ##
+
+This step should not be needed unless the sample index scheme changes.
 
 After a branch's parent versions are updated, you should update the
 indices, which will make sure that all the sample documentation is linked
@@ -162,4 +124,3 @@ Another approach is define the property `updatingVersionPhase` during
 maintenance operations, and skip specialized executions based on that
 property. But combining this with other techniques for end-users who
 want to activate the specialized executions could be a challenge.
-
