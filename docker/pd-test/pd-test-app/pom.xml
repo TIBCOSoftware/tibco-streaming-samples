@@ -47,7 +47,7 @@
         <!-- Sample specific parent that includes sample licence metadata. -->
         <!-- To avoid sample metadata, replace with ep-application-docker. -->
         <artifactId>ep-application-docker-samples</artifactId>
-        <version>11.1.1</version>
+        <version>11.1.2</version>
         <relativePath/>
     </parent>
 

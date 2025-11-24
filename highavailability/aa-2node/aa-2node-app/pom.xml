@@ -45,7 +45,7 @@
     <parent>
         <groupId>com.tibco.ep.sb.parent</groupId>
         <artifactId>ep-application-samples</artifactId> <!-- replace with ep-application to avoid sample metadata -->
-        <version>11.1.1</version>
+        <version>11.1.2</version>
         <relativePath/>
     </parent>
 

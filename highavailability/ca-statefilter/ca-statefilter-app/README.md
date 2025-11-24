@@ -1,6 +1,6 @@
 # HA: cluster aware state filter - Application
 
-How to build cluster aware Spotfire&reg; Streaming 11.1.1 projects - Application
+How to build cluster aware Spotfire&reg; Streaming 11.1.2 projects - Application
 
 * [ca-statefilter-app](src/site/markdown/index.md)
 

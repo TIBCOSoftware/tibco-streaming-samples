@@ -1,6 +1,6 @@
 # Testing: Samples
 
-How to test Spotfire&reg; Streaming 11.1.1 projects.
+How to test Spotfire&reg; Streaming 11.1.2 projects.
 
 Samples :
 

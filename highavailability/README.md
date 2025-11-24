@@ -1,6 +1,6 @@
 # HA: Samples
 
-How to build Highly Available Spotfire&reg; Streaming 11.1.1 projects.
+How to build Highly Available Spotfire&reg; Streaming 11.1.2 projects.
 
 Samples :
 

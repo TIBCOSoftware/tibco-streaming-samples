@@ -1,6 +1,6 @@
 # Structure: Samples
 
-How to structure Spotfire&reg; Streaming 11.1.1 projects.
+How to structure Spotfire&reg; Streaming 11.1.2 projects.
 
 Samples :
 

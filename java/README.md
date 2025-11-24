@@ -1,6 +1,6 @@
 # Java: Samples
 
-How to invoke Java from Spotfire&reg; Streaming 11.1.1 projects.
+How to invoke Java from Spotfire&reg; Streaming 11.1.2 projects.
 
 Samples :
 

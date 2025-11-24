@@ -1,6 +1,6 @@
 # HA: cluster aware polling - Application
 
-How to use cluster aware in Spotfire&reg; Streaming 11.1.1 projects - Application
+How to use cluster aware in Spotfire&reg; Streaming 11.1.2 projects - Application
 
 * [ca-polling-app](src/site/markdown/index.md)
 
