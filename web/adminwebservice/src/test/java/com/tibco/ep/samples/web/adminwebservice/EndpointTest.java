@@ -66,8 +66,10 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
 import java.io.IOException;
+import java.util.List;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNotEquals;
 
 /**
  * Example test case
@@ -91,12 +93,11 @@ public class EndpointTest extends UnitTest {
     private final static String RESPONSE_KEY_RETURN_CODE = "returnCode";
     private final static String RESPONSE_KEY_ROWS = "rows";
     private final static String RESPONSE_KEY_COLUMN_HEADERS = "columnHeaders";
-    public static final String COOKIE_NAME_JSESSIONID = "JSESSIONID"; //$NON-NLS-1$
 
     private final static HttpAuthenticationFeature AUTHENTICATION_FEATURE = HttpAuthenticationFeature.basic(USERNAME, "");
 
     private final ObjectMapper mapper = new ObjectMapper();
-    private static Cookie cookie = null;
+    private static List<Cookie> cookies;
 
     /**
      * Set up the server
@@ -132,8 +133,9 @@ public class EndpointTest extends UnitTest {
         for (int i = 0; i < 60; i++) {
             response = webTarget.request().post(null);
             if (response.getStatus() == Response.Status.OK.getStatusCode()) {
-                assertNotNull(response.getCookies().get(COOKIE_NAME_JSESSIONID));
-                cookie = response.getCookies().get(COOKIE_NAME_JSESSIONID);
+                assertNotEquals(response.getCookies().keySet().size(), 0);
+
+                cookies = response.getCookies().entrySet().stream().map(e-> e.getValue().toCookie()).toList();
                 break;
             } else {
                 LOGGER.info("response: " + response.readEntity(String.class));
@@ -142,7 +144,7 @@ public class EndpointTest extends UnitTest {
             Thread.sleep(1000);
         }
 
-        if (cookie == null) {
+        if (cookies == null) {
             Assert.fail("Starting Admin web service is failed.");
         }
     }
@@ -189,7 +191,9 @@ public class EndpointTest extends UnitTest {
 
         LOGGER.info("find all administration targets, equals to 'epadmin help targets'");
         webTarget = client.target(new JerseyUriBuilder().path(url).path(ADMIN).path(VERSION_NUMBER).path(TARGETS).build());
-        response = webTarget.request().cookie(cookie).get();
+        var req = webTarget.request();
+        cookies.forEach(c -> req.cookie(c));
+        response = req.get();
         Assert.assertEquals("should return status 200", Response.Status.OK.getStatusCode(), response.getStatus());
         Assert.assertNotNull("Should return help information", response.getEntity());
         responseEntity = response.readEntity(String.class);
@@ -236,7 +240,9 @@ public class EndpointTest extends UnitTest {
                                                         .queryParam(PARAMETER_COMMAND, COMMAND_DISPLAY)
                                                         .build());
 
-        response = webTarget.request().cookie(cookie).post(Entity.entity(form, MediaType.MULTIPART_FORM_DATA_TYPE));
+        var req = webTarget.request();
+        cookies.forEach(c -> req.cookie(c));
+        response = req.post(Entity.entity(form, MediaType.MULTIPART_FORM_DATA_TYPE));
         Assert.assertEquals("should return status 200", Response.Status.OK.getStatusCode(), response.getStatus());
         responseEntity = response.readEntity(String.class);
         LOGGER.info(responseEntity);
