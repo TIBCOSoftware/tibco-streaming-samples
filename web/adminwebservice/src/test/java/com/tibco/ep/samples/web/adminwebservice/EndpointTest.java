@@ -47,7 +47,6 @@ import org.glassfish.jersey.client.authentication.HttpAuthenticationFeature;
 import org.glassfish.jersey.media.multipart.FormDataBodyPart;
 import org.glassfish.jersey.media.multipart.FormDataMultiPart;
 import org.glassfish.jersey.media.multipart.MultiPartFeature;
-import org.glassfish.jersey.uri.internal.JerseyUriBuilder;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -64,6 +63,7 @@ import jakarta.ws.rs.client.WebTarget;
 import jakarta.ws.rs.core.Cookie;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.UriBuilder;
 
 import java.io.IOException;
 import java.util.List;
@@ -93,6 +93,7 @@ public class EndpointTest extends UnitTest {
     private final static String RESPONSE_KEY_RETURN_CODE = "returnCode";
     private final static String RESPONSE_KEY_ROWS = "rows";
     private final static String RESPONSE_KEY_COLUMN_HEADERS = "columnHeaders";
+    private final static String RESPONSE_KEY_TARGET_LIST = "targetList";
 
     private final static HttpAuthenticationFeature AUTHENTICATION_FEATURE = HttpAuthenticationFeature.basic(USERNAME, "");
 
@@ -128,7 +129,7 @@ public class EndpointTest extends UnitTest {
         client.register(AUTHENTICATION_FEATURE);
         WebTarget webTarget;
         Response response;
-        webTarget = client.target(new JerseyUriBuilder().path(url).path(ADMIN).path(VERSION_NUMBER).path(CONTEXT_LOGIN).build());
+        webTarget = client.target(UriBuilder.newInstance().path(url).path(ADMIN).path(VERSION_NUMBER).path(CONTEXT_LOGIN).build());
 
         for (int i = 0; i < 60; i++) {
             response = webTarget.request().post(null);
@@ -190,7 +191,7 @@ public class EndpointTest extends UnitTest {
         String responseEntity;
 
         LOGGER.info("find all administration targets, equals to 'epadmin help targets'");
-        webTarget = client.target(new JerseyUriBuilder().path(url).path(ADMIN).path(VERSION_NUMBER).path(TARGETS).build());
+        webTarget = client.target(UriBuilder.newInstance().path(url).path(ADMIN).path(VERSION_NUMBER).path(TARGETS).build());
         var req = webTarget.request();
         cookies.forEach(c -> req.cookie(c));
         response = req.get();
@@ -200,12 +201,15 @@ public class EndpointTest extends UnitTest {
         LOGGER.info(responseEntity);
 
         JsonNode results = mapper.readTree(responseEntity).get(RESPONSE_KEY_RESULTS);
-        Assert.assertEquals("Results should be a JSON array", JsonNodeType.ARRAY, results.getNodeType());
-        JsonNode currentNodeResult = results.get(0);
-        Assert.assertEquals(0, currentNodeResult.get(RESPONSE_KEY_RETURN_CODE).asInt());
-        Assert.assertEquals(SERVICE_NAME, currentNodeResult.get(RESPONSE_KEY_SERVICE_NAME).asText());
-        Assert.assertEquals(JsonNodeType.ARRAY, currentNodeResult.get(RESPONSE_KEY_COLUMN_HEADERS).getNodeType());
-        Assert.assertEquals(JsonNodeType.ARRAY, currentNodeResult.get(RESPONSE_KEY_ROWS).getNodeType());
+        // The command-discovery ("help targets") endpoint returns results as a JSON object
+        // keyed by service name; each value holds that node's targetList of admin commands.
+        // (This differs from the command-execution endpoint, which returns results as an array.)
+        Assert.assertEquals("Results should be a JSON object keyed by service name", JsonNodeType.OBJECT, results.getNodeType());
+        JsonNode currentNodeResult = results.get(SERVICE_NAME);
+        Assert.assertNotNull("Results should contain an entry for " + SERVICE_NAME, currentNodeResult);
+        JsonNode targetList = currentNodeResult.get(RESPONSE_KEY_TARGET_LIST);
+        Assert.assertEquals("targetList should be a JSON array", JsonNodeType.ARRAY, targetList.getNodeType());
+        Assert.assertNotEquals("targetList should not be empty", 0, targetList.size());
 
     }
 
@@ -232,7 +236,7 @@ public class EndpointTest extends UnitTest {
         form = new FormDataMultiPart();
         parametersBody = new FormDataBodyPart("parameters", "");
         form.bodyPart(parametersBody);
-        webTarget = client.target(new JerseyUriBuilder().path(url)
+        webTarget = client.target(UriBuilder.newInstance().path(url)
                                                         .path(ADMIN)
                                                         .path(VERSION_NUMBER)
                                                         .path(TARGETS)

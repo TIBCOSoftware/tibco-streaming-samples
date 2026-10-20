@@ -75,7 +75,14 @@
         <dependency>
             <groupId>org.glassfish.jersey.media</groupId>
             <artifactId>jersey-media-multipart</artifactId>
-            <version>3.1.7</version>
+            <version>3.1.12</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- jersey-client provides HttpAuthenticationFeature; version aligned with the product's Jersey, 3.1.12 -->
+        <dependency>
+            <groupId>org.glassfish.jersey.core</groupId>
+            <artifactId>jersey-client</artifactId>
+            <version>3.1.12</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

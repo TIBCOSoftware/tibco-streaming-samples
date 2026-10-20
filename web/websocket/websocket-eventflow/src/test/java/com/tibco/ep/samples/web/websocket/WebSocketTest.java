@@ -36,7 +36,6 @@ import com.tibco.ep.testing.framework.Results;
 import com.tibco.ep.testing.framework.UnitTest;
 import org.eclipse.jetty.websocket.jakarta.client.JakartaWebSocketClientContainerProvider;
 import org.eclipse.jetty.websocket.jakarta.common.JakartaWebSocketContainer;
-import org.glassfish.jersey.uri.internal.JerseyUriBuilder;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -46,6 +45,7 @@ import org.slf4j.LoggerFactory;
 import jakarta.websocket.DeploymentException;
 import jakarta.websocket.WebSocketContainer;
 import java.io.IOException;
+import java.net.URI;
 
 import static com.tibco.ep.samples.web.websocket.WebSocketClient.messageContent;
 
@@ -120,7 +120,7 @@ public class WebSocketTest extends UnitTest {
         WebSocketClient client = null;
         for (int i = 0; i < TOTAL_TRY_TIMES; i++) {
             try {
-                client = new WebSocketClient(container, new JerseyUriBuilder().path(baseURL).build());
+                client = new WebSocketClient(container, URI.create(baseURL));
                 isTestSuccess = true;
                 break;
             } catch (IOException e) {

@@ -35,7 +35,6 @@ import com.tibco.ep.testing.framework.Administration;
 import com.tibco.ep.testing.framework.Results;
 import com.tibco.ep.testing.framework.UnitTest;
 import org.glassfish.jersey.client.authentication.HttpAuthenticationFeature;
-import org.glassfish.jersey.uri.internal.JerseyUriBuilder;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
@@ -45,6 +44,7 @@ import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
 import jakarta.ws.rs.client.WebTarget;
 import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.UriBuilder;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -89,7 +89,7 @@ public class SpringBootTest extends UnitTest {
 
         Client client = ClientBuilder.newClient().register(feature);
         WebTarget webTarget;
-        webTarget = client.target(new JerseyUriBuilder().path(address).path("springboot-war").path("test").build());
+        webTarget = client.target(UriBuilder.newInstance().path(address).path("springboot-war").path("test").build());
         waitForWAR(webTarget);
 
         try (Response response = webTarget.request().get()) {

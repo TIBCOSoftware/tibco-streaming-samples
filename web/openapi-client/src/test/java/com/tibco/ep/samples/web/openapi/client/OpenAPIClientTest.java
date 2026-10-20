@@ -40,7 +40,6 @@ import com.tibco.ep.testing.framework.Administration;
 import com.tibco.ep.testing.framework.Results;
 import com.tibco.ep.testing.framework.UnitTest;
 import org.glassfish.jersey.client.authentication.HttpAuthenticationFeature;
-import org.glassfish.jersey.uri.internal.JerseyUriBuilder;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.BeforeClass;
@@ -52,6 +51,7 @@ import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
 import jakarta.ws.rs.client.WebTarget;
 import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.UriBuilder;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -84,7 +84,7 @@ public class OpenAPIClientTest extends UnitTest {
         client.register(AUTHENTICATION_FEATURE);
         WebTarget webTarget;
         Response response;
-        webTarget = client.target(new JerseyUriBuilder().path(address).path(HEALTH_CHECK).path(VERSION_NUMBER).path(STATUS).build());
+        webTarget = client.target(UriBuilder.newInstance().path(address).path(HEALTH_CHECK).path(VERSION_NUMBER).path(STATUS).build());
         boolean isStarted = false;
 
         for (int i = 0; i < TRY_TIMES_IN_SECS; i++) {
