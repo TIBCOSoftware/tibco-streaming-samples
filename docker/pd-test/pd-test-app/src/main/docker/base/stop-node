@@ -1,0 +1,44 @@
+#!/bin/sh
+#
+# Script to stop node inside container.
+#
+# This script may be used as the lifecycle.preStop.exec.command in kubernetes
+# deployments to ensure orderly node shutdown.
+#
+# Requires :
+#
+#   STREAMING_RUNTIME_HOME      the location of nodes, application and configuration
+#   STREAMING_NODENAME          the node name to use
+#
+
+#
+# backwards compatibility
+#
+if [ "${NODENAME}" != "" ]
+then
+	STREAMING_NODENAME=${NODENAME}
+fi
+
+if [  "${STREAMING_NODENAME}" == "" ]
+then
+    echo "STREAMING_NODENAME is not set, use --env to set on the docker command line"
+    exit 1
+fi
+
+#
+# service discovery doesn't allow for '-' in streaming node name,
+# so remove it if we are running in k8s (as the start script does)
+#
+if [ "${KUBERNETES_SERVICE_HOST}" != "" ]
+then
+	STREAMING_NODENAME=$(echo ${STREAMING_NODENAME} | tr -d '-')
+fi
+
+adminport=$(epadmin getadminport node --installpath=${STREAMING_RUNTIME_HOME}/node/${STREAMING_NODENAME})
+epadmin --adminport=${adminport} stop node
+epadmin --adminport=${adminport} remove node
+
+#
+# stop the start-node script
+#
+pkill sleep

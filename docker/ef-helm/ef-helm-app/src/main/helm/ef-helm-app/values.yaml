@@ -31,11 +31,23 @@
 #
 
 #
-# Docker registry used to fetch docker images - default is set from maven
+# Container registry prefix used to fetch docker images within the cluster. Default is set from maven property.
 #
-dockerRegistry: ${docker.registry}
+containerRegistry: ${container.registry}
 
 #
 # Number of replicas in the application cluster
 #
 replicaCount: 3
+
+#
+# Container platform. Set from maven property.
+# kubernetes or openshift.
+#
+cloudPlatform: ${cloud.platform}
+
+#
+# License directory. If specified, a Kubernetes Secret containing all license files
+# in this directory will be created and mounted in the pod at this path.
+#
+containerLicenseDirectory: ${container.license.directory}

@@ -39,13 +39,16 @@
 #
 # Optionally :
 #
-#   STREAMING_NODEDEPLOY        path of node deploy configuration file (default is to use application archive)
-#   STREAMING_SUBSTITUTIONS     substitution parameters (default is none)
-#   STREAMING_SUBSTITUTIONFILE  path of substitutions file
-#   STREAMING_ADMINPORT         administration port
-#   STREAMING_DEPLOYDIRECTORIES comma separated list of deployment directories
-#   STREAMING_KEYSTORE          path to the keystore file containing the master secret
-#   STREAMING_KEYSTOREPASSWORD  The password for the keystore file
+#   STREAMING_NODEDEPLOY           path of node deploy configuration file (default is to use application archive)
+#   STREAMING_SUBSTITUTIONS        substitution parameters (default is none)
+#   STREAMING_SUBSTITUTIONFILE     path of substitutions file
+#   STREAMING_ADMINPORT            administration port
+#   STREAMING_DEPLOYDIRECTORIES    comma separated list of deployment directories
+#   STREAMING_KEYSTORE             path to the keystore file containing the master secret
+#   STREAMING_KEYSTOREPASSWORD     The password for the keystore file
+#   STREAMING_LICENSECONFIGURATION Path to a license configuration file. If provided, the base filename must match
+#                                  any license configuration file present in the application archive, and this will
+#                                  replace that (only one license configuration is allowed).
 #
 # The variables can be set on the Docker commandline :
 #    
@@ -111,15 +114,31 @@
 #     - name: STREAMING_NODEDEPLOY
 #       value: "/var/opt/tibco/streambase/configuration/node.conf"
 #
+# POD_NAMESPACE and POD_NAME are passed through from Kubernetes to support security.conf.
+#
 # See Docker, Kubernetes and Helm documentation for further details.
 #
+
+function AddLicenseFileToApplicationArchive
+{
+    appArchive=$1
+    licenseConfigFile=$2
+
+    if [ -f "${licenseConfigFile}" ]; then
+        cp ${appArchive} /tmp >/dev/null 2>&1
+        appArchive="/tmp/$(basename ${appArchive})"
+        chmod u+w ${appArchive} >/dev/null 2>&1
+        zip --grow --junk-paths ${appArchive} ${licenseConfigFile} >/dev/null 2>&1
+    fi
+    echo $appArchive
+}
 
 #
 # backwards compatibility
 #
 if [ "${NODENAME}" != "" ]
 then
-	STREAMING_NODENAME=${NODENAME}
+    STREAMING_NODENAME=${NODENAME}
 fi
 
 if [  "${STREAMING_NODENAME}" == "" ]
@@ -129,12 +148,62 @@ then
 fi
 
 #
+# running in kubernetes?
+#
+if [ "${KUBERNETES_SERVICE_HOST}" != "" ]
+then
+    #
+    # kubernetes service discovery doesn't allow for '-' in streaming node name, so remove it
+    #
+    STREAMING_NODENAME=$(echo ${STREAMING_NODENAME} | tr -d '-')
+
+    #
+    # Find the preferred network device and get the CIDR block of the subnet
+    # to use as substitution variable in secrity.conf for trusted hosts config;
+    # this will make all pods in the cluster trusted.
+    #
+    # The interface prefix alone is not always the pod network: EKS gives a /32
+    # with no subnet route; ROSA/OVN gives a per-node /23 while the real cluster
+    # CIDR (e.g. 10.128.0.0/14) is only in the route table. Prefer the broadest
+    # route containing the pod IP, else fall back to a /16 for the /32 case.
+    #
+    DEVICE=$(ip -f inet route | grep ^default | head -1 | cut -f5 -d\ )
+    DEFAULT_ROUTE=$(ip -o -f inet addr show dev $DEVICE | awk '/scope global/ {print $4}')
+    POD_IP=$(echo "${DEFAULT_ROUTE}" | cut -d/ -f1)
+    IFACE_PREFIX=$(echo "${DEFAULT_ROUTE}" | cut -d/ -f2)
+    # broadest non-default/non-link-local/non-/32 route containing the pod IP
+    # (integer CIDR math, no bitwise ops for busybox awk)
+    SUBNET_ROUTE=$(ip route show | awk -v ip="${POD_IP}" '
+        function ip2int(a,  p) { split(a, p, "."); return ((p[1]*256+p[2])*256+p[3])*256+p[4] }
+        {
+            if ($1 !~ /^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+\/[0-9]+$/) next
+            split($1, a, "/"); net=a[1]; pfx=a[2]+0
+            if (net ~ /^169\.254\./ || pfx==32) next
+            block = 2 ^ (32 - pfx)
+            if (int(ip2int(ip)/block) == int(ip2int(net)/block)) {
+                if (best=="" || pfx<bestpfx) { best=$1; bestpfx=pfx }
+            }
+        }
+        END { if (best!="") print best }')
+    SUBNET_PREFIX=$(echo "${SUBNET_ROUTE}" | cut -d/ -f2)
+    if [ -n "${SUBNET_ROUTE}" ] && [ "${SUBNET_PREFIX}" -le "${IFACE_PREFIX}" ]; then
+        DEFAULT_ROUTE="${SUBNET_ROUTE}"
+    fi
+    case "${DEFAULT_ROUTE}" in
+    */32)
+        DEFAULT_ROUTE=$(echo "${POD_IP}" | awk -F. '{print $1"."$2".0.0/16"}')
+        ;;
+    esac
+fi
+
+
+#
 # required for openshift - see https://docs.okd.io/latest/creating_images/guidelines.html#openshift-specific-guidelines
 #
 if ! whoami &> /dev/null; then
-  if [ -w /etc/passwd ]; then
-    echo "${USER_NAME:-default}:x:$(id -u):0:${USER_NAME:-default} user:${HOME}:/sbin/nologin" >> /etc/passwd
-  fi
+    if [ -w /etc/passwd ]; then
+        echo "${USER_NAME:-default}:x:$(id -u):0:${USER_NAME:-default} user:${HOME}:/sbin/nologin" >> /etc/passwd
+    fi
 fi
 
 #
@@ -143,15 +212,29 @@ fi
 application="$(ls -1t ${STREAMING_RUNTIME_HOME}/application/*.zip | head -1)"
 echo "Installing application archive ${application}"
 echo
+
+if [ "${STREAMING_LICENSECONFIGURATION}" != "" ] && [ -f ${STREAMING_LICENSECONFIGURATION} ]; then
+    echo "Adding license configuration file ${STREAMING_LICENSECONFIGURATION} to $application"
+    application=$(AddLicenseFileToApplicationArchive $application ${STREAMING_LICENSECONFIGURATION})
+fi
+
 args="--application=${application}"
 if [ "${STREAMING_NODEDEPLOY}" != "" ]
 then
     args="${args} --nodedeploy=${STREAMING_NODEDEPLOY}"
 fi
+
+substitutions="STREAMING_LICENSE_DIRECTORY=${STREAMING_LICENSE_DIRECTORY}"
+if [ "${KUBERNETES_SERVICE_HOST}" != "" ]
+then
+    substitutions="${substitutions},POD_NAMESPACE=${POD_NAMESPACE},POD_NAME=${POD_NAME},DEFAULT_ROUTE=${DEFAULT_ROUTE}"
+fi
 if [ "${STREAMING_SUBSTITUTIONS}" != "" ]
 then
-    args="${args} --substitutions=${STREAMING_SUBSTITUTIONS}"
+    substitutions="${substitutions},${STREAMING_SUBSTITUTIONS}"
 fi
+args="${args} --substitutions=${substitutions}"
+
 if [ "${STREAMING_SUBSTITUTIONFILE}" != "" ]
 then
     args="${args} --substitutionfile=${STREAMING_SUBSTITUTIONFILE}"
@@ -178,30 +261,49 @@ fi
 #
 rm -rf ${STREAMING_RUNTIME_HOME}/node/${STREAMING_NODENAME}
 
-sudo iptables -I INPUT ! -s ${HOSTNAME} -p udp --dport 54321 -j DROP
-
 #
 # install and start nodes
 #
+echo "epadmin --username=${USER_NAME} --password=${USER_NAME} install node \
+    --nodename=${STREAMING_NODENAME} \
+    --nodedirectory=${STREAMING_RUNTIME_HOME}/node \
+    ${args}"
+echo
+
 epadmin --username=${USER_NAME} --password=${USER_NAME} install node \
     --nodename=${STREAMING_NODENAME} \
     --nodedirectory=${STREAMING_RUNTIME_HOME}/node \
     ${args}
 
-if [ $? != 0 ]; then
-    echo "Failed to install node"
+if [ $? -ne 0 ]; then
+    echo "Failed to install the node"
     exit 1
 fi
 
-epadmin --servicename=${STREAMING_NODENAME} start node
+adminport=$(epadmin getadminport node --installpath=${STREAMING_RUNTIME_HOME}/node/${STREAMING_NODENAME})
+epadmin --adminport=${adminport} start node
 
-if [ $? != 0 ]; then
-    echo "Failed to start node"
+if [ $? -ne 0 ]; then
+    echo "Failed to start the node"
     exit 1
 fi
+
+function Shutdown
+{
+    if [ -d ${STREAMING_RUNTIME_HOME}/node/${STREAMING_NODENAME} ]; then
+        epadmin --adminport=${adminport} stop node
+        epadmin --adminport=${adminport} remove node
+    fi
+}
 
 #
 # indicate that we've started and wait
 #
 echo "COMMAND FINISHED"
-sleep infinity
+
+# trap SIGTERM for timely shutdown
+trap Shutdown SIGTERM
+
+# wait in a signal-interruptable way
+sleep infinity &
+wait $!

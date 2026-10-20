@@ -55,12 +55,12 @@ On **docker-desktop** :
   See [Prerequisites](#prerequisites)
 2. Build this project to create Docker images and Helm chart
   See [Packaging with Helm](#packaging-with-helm)
-3. Use *helm --set dockerRegistry= install ef-helm-app ef-helm-app/target/helm/repo/ef-helm-app-1.0.0.tgz* to start the Streaming Nodes in the Kubernetes cluster
+3. Use *helm --set containerRegistry= install ef-helm-app ef-helm-app/target/helm/repo/ef-helm-app-1.0.0.tgz* to start the Streaming Nodes in the Kubernetes cluster
 4. Locate the cluster monitor assigned NodePort  with *kubectl describe service clustermonitor*
 5. Access the cluster monitor GUI at http://localhost:NodePort
 
 ```
-$ helm --set dockerRegistry= install ef-helm-app ef-helm-app/target/helm/repo/ef-helm-app-1.0.0.tgz
+$ helm --set containerRegistry= install ef-helm-app ef-helm-app/target/helm/repo/ef-helm-app-1.0.0.tgz
 NAME: ef-helm-app
 LAST DEPLOYED: Mon Nov 18 11:01:44 2019
 NAMESPACE: default
@@ -104,7 +104,7 @@ $ mvn install
 The Helm chart can be installed with the *helm install* command - this will start the application up in Kubernetes :
 
 ```shell
-$ helm --set dockerRegistry= install ef-helm-app ef-helm-app/target/helm/repo/ef-helm-app-1.0.0.tgz
+$ helm --set containerRegistry= install ef-helm-app ef-helm-app/target/helm/repo/ef-helm-app-1.0.0.tgz
 NAME: ef-helm-app
 LAST DEPLOYED: Mon Nov 18 11:01:44 2019
 NAMESPACE: default
@@ -124,14 +124,14 @@ To learn more about the release, try:
   $ helm get ef-helm-app
 ```
 
-If the Docker image has been pushed to a remote repository, the *dockerRegistry*
+If the Docker image has been pushed to a remote repository, the *containerRegistry*
 value can be overridden :
 
 ```shell
-$ helm --set dockerRegistry=registry.com/ install ef-helm-app ef-helm-app/target/helm/repo/ef-helm-app-1.0.0.tgz
+$ helm --set containerRegistry=registry.com/ install ef-helm-app ef-helm-app/target/helm/repo/ef-helm-app-1.0.0.tgz
 ```
 
-Overriding dockerRegistry can be especially important if the image is fetched from a docker
+Overriding containerRegistry can be especially important if the image is fetched from a docker
 registry running in Kubernetes itself ( such as **Kind** ).
 
 Values can be set via the *--set* argument :
@@ -239,7 +239,7 @@ To learn more about the release, try:
 
 ```
 
-Note that in the above example the Helm variable dockerRegistry is set to the location of the
+Note that in the above example the Helm variable containerRegistry is set to the location of the
 docker images.
 
 ---

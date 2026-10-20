@@ -58,6 +58,17 @@
         <skipDockerTests>true</skipDockerTests>
         <skipDockerBuild>true</skipDockerBuild>
 
+        <!--
+            The container.registry property is the registry to which the docker image
+            should be pushed (if desired). A maven 'deploy' with -Ddeploy.docker pushes
+            the image(s), tagged as <container.registry>/<artifactId>:<version>.
+            Empty by default (image referenced by name, no registry prefix).
+        -->
+        <container.registry></container.registry>
+
+        <!-- By default, 'mvn deploy' skips 'docker push ...'. See the deploy-docker profile below. -->
+        <jkube.skip.push>true</jkube.skip.push>
+
         <!-- Define the following property with the quoted URL(s) of the TIBCO Activation Service -->
         <!-- <activation.service.urls>"https://example1.com:7070","https://example2.com:7070"</activation.service.urls> -->
 
@@ -116,6 +127,24 @@
                 <skipStreamBaseDockerBase>false</skipStreamBaseDockerBase>
                 <skipDockerTests>${skipTests}</skipDockerTests>
                 <skipDockerBuild>false</skipDockerBuild>
+            </properties>
+        </profile>
+
+        <!--
+            'mvn deploy -Ddeploy.docker' skips the standard maven artifact deploy
+            and instead pushes the docker image(s) to the container.registry.
+        -->
+        <profile>
+            <id>deploy-docker</id>
+            <activation>
+                <property>
+                    <name>deploy.docker</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <properties>
+                <maven.deploy.skip>true</maven.deploy.skip>
+                <jkube.skip.push>false</jkube.skip.push>
             </properties>
         </profile>
 
@@ -298,6 +327,22 @@
                                 <resource>
                                     <directory>${project.basedir}/src/main/helm/${project.artifactId}</directory>
                                     <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy-licenses</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/helm/${project.artifactId}/licenses</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${local.license.directory}</directory>
+                                    <filtering>false</filtering>
                                 </resource>
                             </resources>
                         </configuration>

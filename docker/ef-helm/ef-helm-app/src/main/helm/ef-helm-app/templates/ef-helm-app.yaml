@@ -106,8 +106,8 @@ spec:
           #
           # docker image to use
           #
-{{- if .Values.dockerRegistry }}
-          image: {{ .Values.dockerRegistry }}/ef-helm-app:1.0.0
+{{- if .Values.containerRegistry }}
+          image: {{ .Values.containerRegistry }}/ef-helm-app:1.0.0
 {{- else}}
           image: ef-helm-app:1.0.0
 {{- end }}

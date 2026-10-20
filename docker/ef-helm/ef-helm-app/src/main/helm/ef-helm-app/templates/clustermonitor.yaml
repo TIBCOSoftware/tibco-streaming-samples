@@ -74,8 +74,8 @@ spec:
           #
           # docker image to use
           #
-{{- if .Values.dockerRegistry }}
-          image: {{ .Values.dockerRegistry }}/clustermonitor:1.0.0
+{{- if .Values.containerRegistry }}
+          image: {{ .Values.containerRegistry }}/clustermonitor:1.0.0
 {{- else}}
           image: clustermonitor:1.0.0
 {{- end }}
