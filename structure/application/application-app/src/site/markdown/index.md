@@ -29,7 +29,6 @@ This sample's structure is shown below :
 │       ├── main
 │       │   ├── configurations
 │       │   │   └── app.conf
-│       │   │   └── license.conf
 │       │   └── docker
 │       │       ├── application
 │       │       │   └── Dockerfile
@@ -52,37 +51,23 @@ This sample's structure is shown below :
 │           └── resources
 ```
 
-## License Activation Configuration
+## License Configuration
 
-A valid TIBCO Activation Service configuration is required before running any Streaming applications.
-This sample contains a license configuration file in `src/main/configurations/license.conf`, which requires
-a Maven property `activation.service.urls` be defined with the quoted URL(s) of one or more TIBCO Activation
-Service instances. This property may be defined in the properties section of the `pom.xml` file:
+A valid TIBCO Streaming license is required before running any Streaming applications. This sample does not
+contain a license configuration file, so a node uses the default local license directory in the home
+directory of the user account under which the node runs:
 
-    <properties>
-        <!-- single activation server -->
-        <activation.service.urls>"https://example.com:7070"</activation.service.urls>
+* Windows: `%USERPROFILE%/.tibco-streaming/licenses`
+* macOS or Linux: `$HOME/.tibco-streaming/licenses`
 
-        <!-- multiple activation servers -->
-        <activation.service.urls>"https://example1.com:7070","https://example2.com:7070"</activation.service.urls>
-    </properties>
+Copy one or more `.bin` license files into that directory before running this sample.
 
-It may also be defined on the maven command line:
-
-    mvn install -Dactivation.service.urls=\"https://example.com:7070\"
-    mvn install -Dactivation.service.urls=\"https://example1.com:7070\",\"https://example2.com:7070\"
-
-Note that the quotes must be escaped on the command line.
-
-It is also possible to define a local license file under the user's home directory, containing the Activation
-Service URL(s). However, because a license configuration file in a Streaming application archive takes
-precedence over a local license file, the `src/main/configurations/license.conf` file must be deleted from
-the project in order for the local license file to be used. Note that the use of local license files is
-not recommended for production deployments, because it requires that each machine running Streaming
-Application(s) have a local license configuration for the user account under which the node runs.
+License files can instead be bundled into the application archive by placing them in a `licenses` directory
+under `src/main/resources`. An activation configuration can also be specified in the application project, a
+fragment project or a node deploy configuration file, and takes precedence over the other mechanisms.
 
 Refer to the **Welcome Guide > Activation in TIBCO Streaming and Model Management Server** page in the
-TIBCO Streaming documentation for more details on license activation.
+TIBCO Streaming documentation for more details on license configuration.
 
 ---
 Copyright (c) 2018-2025 Cloud Software Group, Inc.

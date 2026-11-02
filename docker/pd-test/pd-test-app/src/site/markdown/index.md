@@ -10,37 +10,29 @@ do not block the discovery messages.  This sample describes how to use docker to
 
 See also [Docker section in TIBCO® Streaming documentation](https://docs.tibco.com/pub/str/10.4.0/doc/html/admin/part-docker.html).
 
-## License Activation Configuration
+## License Configuration
 
-A valid TIBCO Activation Service configuration is required before running any Streaming applications.
-This sample contains a license configuration file in `src/main/configurations/license.conf`, which requires
-a Maven property `activation.service.urls` be defined with the quoted URL(s) of one or more TIBCO Activation
-Service instances. This property may be defined in the properties section of the `pom.xml` file:
+A valid TIBCO Streaming license is required before running any Streaming applications. This sample does not
+contain a license configuration file, so a node uses the default local license directory in the home
+directory of the user account under which the node runs:
 
-    <properties>
-        <!-- single activation server -->
-        <activation.service.urls>"https://example.com:7070"</activation.service.urls>
+* Windows: `%USERPROFILE%/.tibco-streaming/licenses`
+* macOS or Linux: `$HOME/.tibco-streaming/licenses`
 
-        <!-- multiple activation servers -->
-        <activation.service.urls>"https://example1.com:7070","https://example2.com:7070"</activation.service.urls>
-    </properties>
+Copy one or more `.bin` license files into that directory before running this sample.
 
-It may also be defined on the maven command line:
+License files can instead be bundled into the application archive by placing them in a `licenses` directory
+under `src/main/resources`. An activation configuration can also be specified in the application project, a
+fragment project or a node deploy configuration file, and takes precedence over the other mechanisms.
 
-    mvn install -Dactivation.service.urls=\"https://example.com:7070\"
-    mvn install -Dactivation.service.urls=\"https://example1.com:7070\",\"https://example2.com:7070\"
+When the Docker image is built, the license files found in the local license directory are copied into the
+image, where the node running in the container finds them in `/home/tibco/.tibco-streaming/licenses`. To copy
+license files from a different directory, define the `local.license.directory` Maven property:
 
-Note that the quotes must be escaped on the command line.
-
-It is also possible to define a local license file under the user's home directory, containing the Activation
-Service URL(s). However, because a license configuration file in a Streaming application archive takes
-precedence over a local license file, the `src/main/configurations/license.conf` file must be deleted from
-the project in order for the local license file to be used. Note that the use of local license files is
-not recommended for production deployments, because it requires that each machine running Streaming
-Application(s) have a local license configuration for the user account under which the node runs.
+    mvn clean install -Dlocal.license.directory=/path/to/licenses
 
 Refer to the **Welcome Guide > Activation in TIBCO Streaming and Model Management Server** page in the
-TIBCO Streaming documentation for more details on license activation.
+TIBCO Streaming documentation for more details on license configuration.
 
 ## Creating an application archive project for Docker from TIBCO Streaming&reg; Studio
 
